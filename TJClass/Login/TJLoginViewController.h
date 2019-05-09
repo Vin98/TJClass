@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  TJLoginViewController.h
 //  TJClass
 //
 //  Created by 李佳乐 on 2019/5/3.
@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+NS_ASSUME_NONNULL_BEGIN
 
+@interface TJLoginViewController : UIViewController
 
 @end
 
+NS_ASSUME_NONNULL_END
