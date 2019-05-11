@@ -16,9 +16,11 @@
 		3D5BDC1E227C617F00C32105 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D5BDC1C227C617F00C32105 /* LaunchScreen.storyboard */; };
 		3D5BDC21227C617F00C32105 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D5BDC20227C617F00C32105 /* main.m */; };
 		3D5BDC29227C61D800C32105 /* TJLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D5BDC28227C61D800C32105 /* TJLoginViewController.m */; };
+		AF54525A013F4192395B92C0 /* libPods-TJClass.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6626802D42FCCD2A548C9016 /* libPods-TJClass.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		30232253F3290DE8DFD01F77 /* Pods-TJClass.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TJClass.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TJClass/Pods-TJClass.debug.xcconfig"; sourceTree = "<group>"; };
 		3D07B73E227DC5DE00596994 /* TJChatViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TJChatViewController.h; sourceTree = "<group>"; };
 		3D07B73F227DC5DE00596994 /* TJChatViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TJChatViewController.m; sourceTree = "<group>"; };
 		3D07B743227DCA9800596994 /* TJChatCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TJChatCell.h; sourceTree = "<group>"; };
@@ -35,6 +37,8 @@
 		3D5BDC20227C617F00C32105 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		3D5BDC27227C61D800C32105 /* TJLoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TJLoginViewController.h; sourceTree = "<group>"; };
 		3D5BDC28227C61D800C32105 /* TJLoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TJLoginViewController.m; sourceTree = "<group>"; };
+		6626802D42FCCD2A548C9016 /* libPods-TJClass.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TJClass.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		90F5E285D8424ACCF509F98C /* Pods-TJClass.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TJClass.release.xcconfig"; path = "Pods/Target Support Files/Pods-TJClass/Pods-TJClass.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,12 +46,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF54525A013F4192395B92C0 /* libPods-TJClass.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3BBF122E88DF97CABE930347 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6626802D42FCCD2A548C9016 /* libPods-TJClass.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		3D07B741227DC5EB00596994 /* TabBar */ = {
 			isa = PBXGroup;
 			children = (
@@ -72,6 +85,8 @@
 			children = (
 				3D5BDC10227C617D00C32105 /* TJClass */,
 				3D5BDC0F227C617D00C32105 /* Products */,
+				9BBC035E28A8EFEF8424B924 /* Pods */,
+				3BBF122E88DF97CABE930347 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -110,6 +125,15 @@
 			path = Login;
 			sourceTree = "<group>";
 		};
+		9BBC035E28A8EFEF8424B924 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				30232253F3290DE8DFD01F77 /* Pods-TJClass.debug.xcconfig */,
+				90F5E285D8424ACCF509F98C /* Pods-TJClass.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -117,9 +141,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3D5BDC24227C617F00C32105 /* Build configuration list for PBXNativeTarget "TJClass" */;
 			buildPhases = (
+				09839620BEFA2296238D1D2E /* [CP] Check Pods Manifest.lock */,
 				3D5BDC0A227C617D00C32105 /* Sources */,
 				3D5BDC0B227C617D00C32105 /* Frameworks */,
 				3D5BDC0C227C617D00C32105 /* Resources */,
+				C8AEA690BDAB9C9CFF5F724B /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -174,6 +200,55 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		09839620BEFA2296238D1D2E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TJClass-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C8AEA690BDAB9C9CFF5F724B /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-TJClass/Pods-TJClass-resources.sh",
+				"${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle",
+				"${PODS_ROOT}/SVProgressHUD/SVProgressHUD/SVProgressHUD.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MJRefresh.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SVProgressHUD.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TJClass/Pods-TJClass-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		3D5BDC0A227C617D00C32105 /* Sources */ = {
@@ -325,6 +400,7 @@
 		};
 		3D5BDC25227C617F00C32105 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 30232253F3290DE8DFD01F77 /* Pods-TJClass.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -342,6 +418,7 @@
 		};
 		3D5BDC26227C617F00C32105 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 90F5E285D8424ACCF509F98C /* Pods-TJClass.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

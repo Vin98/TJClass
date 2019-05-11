@@ -13,7 +13,6 @@ target 'TJClass' do
   pod 'FLEX', '~> 2.4.0'
   pod 'Reachability', '~> 3.2'
   pod 'YYModel', '~> 1.0.4'
-  pod 'MBProgressHUD', '~> 1.1.0'
   pod 'SVProgressHUD'
 
 end
