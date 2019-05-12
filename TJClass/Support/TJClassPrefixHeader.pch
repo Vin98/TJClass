@@ -1,0 +1,20 @@
+//
+//  TJClassPrefixHeader.pch
+//  TJClass
+//
+//  Created by 李佳乐 on 2019/5/12.
+//  Copyright © 2019 Jiale Li. All rights reserved.
+//
+
+#ifndef TJClassPrefixHeader_pch
+#define TJClassPrefixHeader_pch
+
+//屏幕宽高
+#define SCREEN_WIDTH   [UIScreen mainScreen].bounds.size.width
+#define SCREENH_HEIGHT [UIScreen mainScreen].bounds.size.height
+#define ONEPIXEL       1 / [UIScreen mainScreen].scale
+#define THEME_COLOR    [UIColor colorWithRed:68.f / 255.f green:152.f / 255.f blue:153.f / 255.f alpha:1];
+
+#import "TJCommonHeader.h"
+
+#endif /* TJClassPrefixHeader_pch */

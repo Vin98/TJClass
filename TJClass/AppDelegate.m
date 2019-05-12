@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "TJLoginViewController.h"
 
 @interface AppDelegate ()
 
@@ -17,6 +18,11 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    UIStoryboard *storyboard =[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
+    self.window.rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"TJLoginViewController"];
+    self.window.backgroundColor = [UIColor clearColor];
+    [self.window makeKeyAndVisible];
     return YES;
 }
 

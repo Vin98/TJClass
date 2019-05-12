@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface TJLoginView : UIView
 
+@property (nonatomic, copy) dispatch_block_t loginBlock;
+
 @end
 
 NS_ASSUME_NONNULL_END
