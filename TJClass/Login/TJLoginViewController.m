@@ -7,6 +7,7 @@
 //
 
 #import "TJLoginViewController.h"
+#import "TJLoginView.h"
 
 @interface TJLoginViewController ()
 
@@ -17,6 +18,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    TJLoginView *loginView = [[TJLoginView alloc] initWithFrame:self.view.bounds];
+    [self.view addSubview:loginView];
 }
 
 /*
