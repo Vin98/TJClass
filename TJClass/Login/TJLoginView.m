@@ -10,7 +10,7 @@
 
 static const CGFloat TJLoginViewLoginButtonHeight = 50.f;
 
-@interface TJLoginView()
+@interface TJLoginView() <UITextFieldDelegate>
 
 @property (nonatomic, strong) UILabel *titleLabel;
 @property (nonatomic, strong) UILabel *tipsLabel;
@@ -141,6 +141,8 @@ static const CGFloat TJLoginViewLoginButtonHeight = 50.f;
         _userNameTextField.tintColor = [UIColor lightTextColor];
         _userNameTextField.placeholder = @"请输入学号";
         _userNameTextField.clearButtonMode = UITextFieldViewModeAlways;
+        _userNameTextField.returnKeyType = UIReturnKeyNext;
+        _userNameTextField.delegate = self;
     }
     return _userNameTextField;
 }
@@ -155,6 +157,8 @@ static const CGFloat TJLoginViewLoginButtonHeight = 50.f;
         _passwordTextField.placeholder = @"请输入密码";
         _passwordTextField.secureTextEntry = YES;
         _passwordTextField.clearButtonMode = UITextFieldViewModeAlways;
+        _passwordTextField.returnKeyType = UIReturnKeyGo;
+        _passwordTextField.delegate = self;
     }
     return _passwordTextField;
 }
@@ -171,8 +175,21 @@ static const CGFloat TJLoginViewLoginButtonHeight = 50.f;
     return _loginButton;
 }
 
+- (NSString *)userName {
+    return self.userNameTextField.text;
+}
+
+- (NSString *)password {
+    return self.passwordTextField.text;
+}
+
 #pragma mark - action
 - (void)loginButtonClicked:(id)sender {
+    if (self.userNameTextField.text.length == 0 || self.passwordTextField.text.length == 0) {
+        [SVProgressHUD showErrorWithStatus:@"账号或密码不能为空"];
+        [SVProgressHUD dismissWithDelay:1.f];
+        return;
+    }
     if (self.loginBlock) {
         self.loginBlock();
     }
@@ -180,6 +197,16 @@ static const CGFloat TJLoginViewLoginButtonHeight = 50.f;
 
 - (void)backgroundTapped:(id)sender {
     [self endEditing:YES];
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    if (textField == self.userNameTextField) {
+        [self.passwordTextField becomeFirstResponder];
+    } else if (textField == self.passwordTextField) {
+        [self endEditing:YES];
+        [self loginButtonClicked:nil];
+    }
+    return YES;
 }
 
 @end

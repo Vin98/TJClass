@@ -22,6 +22,8 @@
     self.window.rootViewController = TJLoginViewController.new;
     self.window.backgroundColor = [UIColor clearColor];
     [self.window makeKeyAndVisible];
+    
+    [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
     return YES;
 }
 

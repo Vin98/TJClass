@@ -15,6 +15,9 @@
 #define ONEPIXEL       1 / [UIScreen mainScreen].scale
 #define THEME_COLOR    [UIColor colorWithRed:68.f / 255.f green:152.f / 255.f blue:153.f / 255.f alpha:1];
 
+#define weakify(type)  __weak typeof(type) weak##type = type;
+#define strongify(type)  __strong typeof(type) type = weak##type;
+
 #import "TJCommonHeader.h"
 
 #endif /* TJClassPrefixHeader_pch */

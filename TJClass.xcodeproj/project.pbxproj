@@ -105,7 +105,6 @@
 				3D5BDC12227C617D00C32105 /* AppDelegate.m */,
 				3D5BDC1A227C617F00C32105 /* Assets.xcassets */,
 				3D5BDC1C227C617F00C32105 /* LaunchScreen.storyboard */,
-				3D5BDC1F227C617F00C32105 /* Info.plist */,
 				3D5BDC20227C617F00C32105 /* main.m */,
 				3D5BDC2A227C61FA00C32105 /* Login */,
 				3D07B741227DC5EB00596994 /* TabBar */,
@@ -128,6 +127,7 @@
 		3D8DD4A12287BA5300C03985 /* Support */ = {
 			isa = PBXGroup;
 			children = (
+				3D5BDC1F227C617F00C32105 /* Info.plist */,
 				3D8DD49F2287B50900C03985 /* TJClassPrefixHeader.pch */,
 				3D8DD4A02287B67C00C03985 /* TJCommonHeader.h */,
 			);
@@ -407,7 +407,7 @@
 				DEVELOPMENT_TEAM = 3QS9BN76F6;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/TJClass/Support/TJClassPrefixHeader.pch";
-				INFOPLIST_FILE = TJClass/Info.plist;
+				INFOPLIST_FILE = TJClass/Support/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -427,7 +427,7 @@
 				DEVELOPMENT_TEAM = 3QS9BN76F6;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/TJClass/Support/TJClassPrefixHeader.pch";
-				INFOPLIST_FILE = TJClass/Info.plist;
+				INFOPLIST_FILE = TJClass/Support/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

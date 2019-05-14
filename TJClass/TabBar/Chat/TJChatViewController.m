@@ -9,7 +9,7 @@
 #import "TJChatViewController.h"
 #import "TJChatCell.h"
 
-@interface TJChatViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface TJChatViewController ()
 
 @end
 
@@ -18,6 +18,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [self.tableView registerClass:[TJChatCell class] forCellReuseIdentifier:NSStringFromClass([TJChatCell class])];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {

@@ -13,6 +13,8 @@ NS_ASSUME_NONNULL_BEGIN
 @interface TJLoginView : UIView
 
 @property (nonatomic, copy) dispatch_block_t loginBlock;
+@property (nonatomic, readonly, strong) NSString *userName;
+@property (nonatomic, readonly, strong) NSString *password;
 
 @end
 

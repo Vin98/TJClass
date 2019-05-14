@@ -10,23 +10,24 @@
 
 @interface TJChatCell()
 
-@property (weak, nonatomic) IBOutlet UIImageView *avatarView;
-@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
-@property (weak, nonatomic) IBOutlet UILabel *messageLabel;
-@property (weak, nonatomic) IBOutlet UILabel *timeLabel;
-
+@property (strong, nonatomic) UIImageView *avatarView;
+@property (strong, nonatomic) UILabel *nameLabel;
+@property (strong ,nonatomic) UILabel *messageLabel;
+@property (strong, nonatomic) UILabel *timeLabel;
 
 @end
 
 @implementation TJChatCell
 
-- (void)awakeFromNib {
-    [super awakeFromNib];
-    // Initialization code
-    self.avatarView.image = [UIImage imageNamed:@"placeholderAvatar"];
-    self.nameLabel.text = @"宝宝";
-    self.messageLabel.text = @"我想你啦";
-    self.timeLabel.text = @"now";
+- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
+    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+    if (self) {
+        self.avatarView.image = [UIImage imageNamed:@"placeholderAvatar"];
+        self.nameLabel.text = @"宝宝";
+        self.messageLabel.text = @"我想你啦";
+        self.timeLabel.text = @"now";
+    }
+    return self;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
