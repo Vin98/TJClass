@@ -20,6 +20,11 @@
 		ED3E0791228AFB8600BEC88F /* TJMineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED3E0790228AFB8600BEC88F /* TJMineViewController.m */; };
 		ED3E0795228B06D900BEC88F /* TJMineHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = ED3E0794228B06D900BEC88F /* TJMineHeaderView.m */; };
 		ED3E0798228B09DE00BEC88F /* TJLoginViewPresentAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = ED3E0797228B09DE00BEC88F /* TJLoginViewPresentAnimation.m */; };
+		ED6A108C228BD04200E533B2 /* TJMineCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ED6A108B228BD04100E533B2 /* TJMineCell.m */; };
+		ED6A108F228BD53700E533B2 /* TJSignViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED6A108E228BD53700E533B2 /* TJSignViewController.m */; };
+		ED6A1093228BD55800E533B2 /* TJSignClassCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ED6A1092228BD55800E533B2 /* TJSignClassCell.m */; };
+		ED6A1099228BD7EF00E533B2 /* TJClass.m in Sources */ = {isa = PBXBuildFile; fileRef = ED6A1098228BD7EF00E533B2 /* TJClass.m */; };
+		EDFFE057228BD92900A039DF /* TJUser.m in Sources */ = {isa = PBXBuildFile; fileRef = EDFFE056228BD92900A039DF /* TJUser.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +56,16 @@
 		ED3E0794228B06D900BEC88F /* TJMineHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TJMineHeaderView.m; sourceTree = "<group>"; };
 		ED3E0796228B09DE00BEC88F /* TJLoginViewPresentAnimation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TJLoginViewPresentAnimation.h; sourceTree = "<group>"; };
 		ED3E0797228B09DE00BEC88F /* TJLoginViewPresentAnimation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TJLoginViewPresentAnimation.m; sourceTree = "<group>"; };
+		ED6A108A228BD04100E533B2 /* TJMineCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TJMineCell.h; sourceTree = "<group>"; };
+		ED6A108B228BD04100E533B2 /* TJMineCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TJMineCell.m; sourceTree = "<group>"; };
+		ED6A108D228BD53700E533B2 /* TJSignViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TJSignViewController.h; sourceTree = "<group>"; };
+		ED6A108E228BD53700E533B2 /* TJSignViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TJSignViewController.m; sourceTree = "<group>"; };
+		ED6A1091228BD55800E533B2 /* TJSignClassCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TJSignClassCell.h; sourceTree = "<group>"; };
+		ED6A1092228BD55800E533B2 /* TJSignClassCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TJSignClassCell.m; sourceTree = "<group>"; };
+		ED6A1097228BD7EF00E533B2 /* TJClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TJClass.h; sourceTree = "<group>"; };
+		ED6A1098228BD7EF00E533B2 /* TJClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TJClass.m; sourceTree = "<group>"; };
+		EDFFE055228BD92900A039DF /* TJUser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TJUser.h; sourceTree = "<group>"; };
+		EDFFE056228BD92900A039DF /* TJUser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TJUser.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +95,7 @@
 				ED3E078D228AF60F00BEC88F /* TJMainViewController.m */,
 				3D07B742227DCA7900596994 /* Chat */,
 				ED3E0792228AFB8C00BEC88F /* Mine */,
+				ED6A1090228BD53D00E533B2 /* Sign */,
 			);
 			path = TabBar;
 			sourceTree = "<group>";
@@ -91,6 +107,8 @@
 				3D07B73F227DC5DE00596994 /* TJChatViewController.m */,
 				3D07B743227DCA9800596994 /* TJChatCell.h */,
 				3D07B744227DCA9800596994 /* TJChatCell.m */,
+				EDFFE055228BD92900A039DF /* TJUser.h */,
+				EDFFE056228BD92900A039DF /* TJUser.m */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
@@ -167,8 +185,47 @@
 				ED3E0790228AFB8600BEC88F /* TJMineViewController.m */,
 				ED3E0793228B06D900BEC88F /* TJMineHeaderView.h */,
 				ED3E0794228B06D900BEC88F /* TJMineHeaderView.m */,
+				ED6A108A228BD04100E533B2 /* TJMineCell.h */,
+				ED6A108B228BD04100E533B2 /* TJMineCell.m */,
 			);
 			path = Mine;
+			sourceTree = "<group>";
+		};
+		ED6A1090228BD53D00E533B2 /* Sign */ = {
+			isa = PBXGroup;
+			children = (
+				ED6A1094228BD7BA00E533B2 /* Controller */,
+				ED6A1096228BD7DE00E533B2 /* View */,
+				ED6A109A228BD7F400E533B2 /* Model */,
+			);
+			path = Sign;
+			sourceTree = "<group>";
+		};
+		ED6A1094228BD7BA00E533B2 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				ED6A108D228BD53700E533B2 /* TJSignViewController.h */,
+				ED6A108E228BD53700E533B2 /* TJSignViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		ED6A1096228BD7DE00E533B2 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				ED6A1091228BD55800E533B2 /* TJSignClassCell.h */,
+				ED6A1092228BD55800E533B2 /* TJSignClassCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		ED6A109A228BD7F400E533B2 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				ED6A1097228BD7EF00E533B2 /* TJClass.h */,
+				ED6A1098228BD7EF00E533B2 /* TJClass.m */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -291,9 +348,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED6A1099228BD7EF00E533B2 /* TJClass.m in Sources */,
 				3D5BDC29227C61D800C32105 /* TJLoginViewController.m in Sources */,
+				ED6A108C228BD04200E533B2 /* TJMineCell.m in Sources */,
 				3D07B745227DCA9800596994 /* TJChatCell.m in Sources */,
+				EDFFE057228BD92900A039DF /* TJUser.m in Sources */,
 				3D07B748227DD42F00596994 /* TJLoginView.m in Sources */,
+				ED6A1093228BD55800E533B2 /* TJSignClassCell.m in Sources */,
 				3D5BDC21227C617F00C32105 /* main.m in Sources */,
 				3D07B740227DC5DE00596994 /* TJChatViewController.m in Sources */,
 				3D5BDC13227C617D00C32105 /* AppDelegate.m in Sources */,
@@ -301,6 +362,7 @@
 				ED3E0791228AFB8600BEC88F /* TJMineViewController.m in Sources */,
 				ED3E0795228B06D900BEC88F /* TJMineHeaderView.m in Sources */,
 				ED3E0798228B09DE00BEC88F /* TJLoginViewPresentAnimation.m in Sources */,
+				ED6A108F228BD53700E533B2 /* TJSignViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

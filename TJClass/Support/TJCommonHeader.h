@@ -12,6 +12,7 @@
 #import <Masonry/Masonry.h>
 #import <AFNetworking/AFNetworking.h>
 #import <SVProgressHUD/SVProgressHUD.h>
+#import <YYModel/YYModel.h>
 
 
 #endif /* TJCommonHeader_h */

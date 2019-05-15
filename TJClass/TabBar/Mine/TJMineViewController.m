@@ -9,9 +9,12 @@
 #import "TJMineViewController.h"
 #import "TJMineHeaderView.h"
 
+static const NSUInteger TJMineCellRecordCellIndex = 0;
+
 @interface TJMineViewController ()
 
 @property (nonatomic, strong) TJMineHeaderView *headerView;
+//@property (nonatomic, strong) 
 
 @end
 
@@ -20,17 +23,29 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"我";
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.tableHeaderView = self.headerView;
-    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:NSStringFromClass([UITableViewCell class])];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 4;
+    return 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([UITableViewCell class])];
-    cell.textLabel.text = @"我的资料";
+    if (!cell) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"TJMineCell"];
+    }
+    switch (indexPath.row) {
+        case TJMineCellRecordCellIndex:
+            cell.imageView.image = [UIImage imageNamed:@"login_password"];
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            cell.textLabel.text = @"我的签到记录";
+            break;
+            
+        default:
+            break;
+    }
     return cell;
 }
 
