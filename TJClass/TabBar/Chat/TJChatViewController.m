@@ -17,7 +17,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    self.title = @"聊天";
     [self.tableView registerClass:[TJChatCell class] forCellReuseIdentifier:NSStringFromClass([TJChatCell class])];
 }
 

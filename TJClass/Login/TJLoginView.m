@@ -185,11 +185,11 @@ static const CGFloat TJLoginViewLoginButtonHeight = 50.f;
 
 #pragma mark - action
 - (void)loginButtonClicked:(id)sender {
-    if (self.userNameTextField.text.length == 0 || self.passwordTextField.text.length == 0) {
-        [SVProgressHUD showErrorWithStatus:@"账号或密码不能为空"];
-        [SVProgressHUD dismissWithDelay:1.f];
-        return;
-    }
+//    if (self.userNameTextField.text.length == 0 || self.passwordTextField.text.length == 0) {
+//        [SVProgressHUD showErrorWithStatus:@"账号或密码不能为空"];
+//        [SVProgressHUD dismissWithDelay:1.f];
+//        return;
+//    }
     if (self.loginBlock) {
         self.loginBlock();
     }

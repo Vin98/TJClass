@@ -7,8 +7,11 @@
 //
 
 #import "TJMineViewController.h"
+#import "TJMineHeaderView.h"
 
 @interface TJMineViewController ()
+
+@property (nonatomic, strong) TJMineHeaderView *headerView;
 
 @end
 
@@ -16,17 +19,26 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    self.title = @"我";
+    self.tableView.tableHeaderView = self.headerView;
+    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:NSStringFromClass([UITableViewCell class])];
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 4;
 }
-*/
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([UITableViewCell class])];
+    cell.textLabel.text = @"我的资料";
+    return cell;
+}
+
+- (TJMineHeaderView *)headerView {
+    if (!_headerView) {
+        _headerView = [[TJMineHeaderView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, [TJMineHeaderView typicalHeight])];
+    }
+    return _headerView;
+}
 
 @end

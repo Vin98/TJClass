@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "TJLoginViewController.h"
+#import "TJMainViewController.h"
 
 @interface AppDelegate ()
 
@@ -19,7 +20,10 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    //未登录
     self.window.rootViewController = TJLoginViewController.new;
+//    self.window.rootViewController = TJMainViewController.new;
+    
     self.window.backgroundColor = [UIColor clearColor];
     [self.window makeKeyAndVisible];
     

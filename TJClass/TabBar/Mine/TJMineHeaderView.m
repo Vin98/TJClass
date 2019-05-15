@@ -8,14 +8,41 @@
 
 #import "TJMineHeaderView.h"
 
+static const CGFloat TJMineHeaderViewAvatarDiamater = 80.f;
+
 @implementation TJMineHeaderView
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
+- (instancetype)initWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+    if (self) {
+        [self configUI];
+    }
+    return self;
 }
-*/
+
+- (void)configUI {
+    self.backgroundColor = THEME_COLOR;
+    [self addSubview:self.avatarView];
+    
+    [self.avatarView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.center.mas_equalTo(self);
+        make.size.mas_equalTo(CGSizeMake(TJMineHeaderViewAvatarDiamater, TJMineHeaderViewAvatarDiamater));
+    }];
+}
+
+- (UIImageView *)avatarView {
+    if (!_avatarView) {
+        _avatarView = UIImageView.new;
+        _avatarView.layer.cornerRadius = TJMineHeaderViewAvatarDiamater / 2;
+        _avatarView.layer.masksToBounds = YES;
+        _avatarView.image = [UIImage imageNamed:@"placeholderAvatar"];
+    }
+    return _avatarView;
+}
+
++ (CGFloat)typicalHeight {
+    return 2.f * SCREEN_WIDTH / 3.f;
+}
 
 @end

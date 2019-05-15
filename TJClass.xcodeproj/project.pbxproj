@@ -16,6 +16,10 @@
 		3D5BDC21227C617F00C32105 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D5BDC20227C617F00C32105 /* main.m */; };
 		3D5BDC29227C61D800C32105 /* TJLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D5BDC28227C61D800C32105 /* TJLoginViewController.m */; };
 		AF54525A013F4192395B92C0 /* libPods-TJClass.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6626802D42FCCD2A548C9016 /* libPods-TJClass.a */; };
+		ED3E078E228AF60F00BEC88F /* TJMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED3E078D228AF60F00BEC88F /* TJMainViewController.m */; };
+		ED3E0791228AFB8600BEC88F /* TJMineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED3E0790228AFB8600BEC88F /* TJMineViewController.m */; };
+		ED3E0795228B06D900BEC88F /* TJMineHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = ED3E0794228B06D900BEC88F /* TJMineHeaderView.m */; };
+		ED3E0798228B09DE00BEC88F /* TJLoginViewPresentAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = ED3E0797228B09DE00BEC88F /* TJLoginViewPresentAnimation.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +43,14 @@
 		3D8DD4A02287B67C00C03985 /* TJCommonHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TJCommonHeader.h; sourceTree = "<group>"; };
 		6626802D42FCCD2A548C9016 /* libPods-TJClass.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TJClass.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		90F5E285D8424ACCF509F98C /* Pods-TJClass.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TJClass.release.xcconfig"; path = "Pods/Target Support Files/Pods-TJClass/Pods-TJClass.release.xcconfig"; sourceTree = "<group>"; };
+		ED3E078C228AF60F00BEC88F /* TJMainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TJMainViewController.h; sourceTree = "<group>"; };
+		ED3E078D228AF60F00BEC88F /* TJMainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TJMainViewController.m; sourceTree = "<group>"; };
+		ED3E078F228AFB8600BEC88F /* TJMineViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TJMineViewController.h; sourceTree = "<group>"; };
+		ED3E0790228AFB8600BEC88F /* TJMineViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TJMineViewController.m; sourceTree = "<group>"; };
+		ED3E0793228B06D900BEC88F /* TJMineHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TJMineHeaderView.h; sourceTree = "<group>"; };
+		ED3E0794228B06D900BEC88F /* TJMineHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TJMineHeaderView.m; sourceTree = "<group>"; };
+		ED3E0796228B09DE00BEC88F /* TJLoginViewPresentAnimation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TJLoginViewPresentAnimation.h; sourceTree = "<group>"; };
+		ED3E0797228B09DE00BEC88F /* TJLoginViewPresentAnimation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TJLoginViewPresentAnimation.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,7 +76,10 @@
 		3D07B741227DC5EB00596994 /* TabBar */ = {
 			isa = PBXGroup;
 			children = (
+				ED3E078C228AF60F00BEC88F /* TJMainViewController.h */,
+				ED3E078D228AF60F00BEC88F /* TJMainViewController.m */,
 				3D07B742227DCA7900596994 /* Chat */,
+				ED3E0792228AFB8C00BEC88F /* Mine */,
 			);
 			path = TabBar;
 			sourceTree = "<group>";
@@ -120,6 +135,8 @@
 				3D5BDC28227C61D800C32105 /* TJLoginViewController.m */,
 				3D07B746227DD42F00596994 /* TJLoginView.h */,
 				3D07B747227DD42F00596994 /* TJLoginView.m */,
+				ED3E0796228B09DE00BEC88F /* TJLoginViewPresentAnimation.h */,
+				ED3E0797228B09DE00BEC88F /* TJLoginViewPresentAnimation.m */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -141,6 +158,17 @@
 				90F5E285D8424ACCF509F98C /* Pods-TJClass.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		ED3E0792228AFB8C00BEC88F /* Mine */ = {
+			isa = PBXGroup;
+			children = (
+				ED3E078F228AFB8600BEC88F /* TJMineViewController.h */,
+				ED3E0790228AFB8600BEC88F /* TJMineViewController.m */,
+				ED3E0793228B06D900BEC88F /* TJMineHeaderView.h */,
+				ED3E0794228B06D900BEC88F /* TJMineHeaderView.m */,
+			);
+			path = Mine;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -269,6 +297,10 @@
 				3D5BDC21227C617F00C32105 /* main.m in Sources */,
 				3D07B740227DC5DE00596994 /* TJChatViewController.m in Sources */,
 				3D5BDC13227C617D00C32105 /* AppDelegate.m in Sources */,
+				ED3E078E228AF60F00BEC88F /* TJMainViewController.m in Sources */,
+				ED3E0791228AFB8600BEC88F /* TJMineViewController.m in Sources */,
+				ED3E0795228B06D900BEC88F /* TJMineHeaderView.m in Sources */,
+				ED3E0798228B09DE00BEC88F /* TJLoginViewPresentAnimation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

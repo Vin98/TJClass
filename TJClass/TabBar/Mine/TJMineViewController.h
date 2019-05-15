@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface TJMineViewController : UIViewController
+@interface TJMineViewController : UITableViewController
 
 @end
 
