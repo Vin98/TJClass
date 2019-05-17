@@ -107,7 +107,7 @@
             UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
             UIColor *color = THEME_COLOR;
             [button setBackgroundImage:[UIImage imageWithColor:color] forState:UIControlStateNormal];
-            [button setTitle:@"点击\n签到" forState:UIControlStateNormal];
+            [button setTitle:@"发起\n签到" forState:UIControlStateNormal];
             [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
             button.titleLabel.numberOfLines = 2;
             button.layer.cornerRadius = _signButtonDiameter / 2;
@@ -142,15 +142,21 @@
 
 #pragma mark - action
 - (void)gotoDetailPage:(id)sender {
-    
+    if (self.gotoDetailPageBlock) {
+        self.gotoDetailPageBlock();
+    }
 }
 
 - (void)gotoRecordPage:(id)sender {
-    
+    if (self.gotoRecoedPageBlock) {
+        self.gotoRecoedPageBlock();
+    }
 }
 
 - (void)sign:(id)sender {
-    
+    if (self.createSignBlock) {
+        self.createSignBlock();
+    }
 }
 
 

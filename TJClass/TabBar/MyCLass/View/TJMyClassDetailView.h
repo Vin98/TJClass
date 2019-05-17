@@ -12,6 +12,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface TJMyClassDetailView : UIView
 
+@property (nonatomic, copy) dispatch_block_t gotoDetailPageBlock;
+@property (nonatomic, copy) dispatch_block_t gotoRecoedPageBlock;
+@property (nonatomic, copy) dispatch_block_t createSignBlock;
+
 @end
 
 NS_ASSUME_NONNULL_END

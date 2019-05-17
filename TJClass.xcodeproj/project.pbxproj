@@ -29,6 +29,7 @@
 		EDD7774F228E9B5E006730B1 /* TJMyClassDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD7774E228E9B5E006730B1 /* TJMyClassDetailViewController.m */; };
 		EDD77752228E9C01006730B1 /* TJMyClassDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD77751228E9C01006730B1 /* TJMyClassDetailView.m */; };
 		EDD77756228ED0D9006730B1 /* UIImage+Ex.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD77755228ED0D9006730B1 /* UIImage+Ex.m */; };
+		EDD77759228F0A93006730B1 /* TJCreateSignRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD77758228F0A93006730B1 /* TJCreateSignRequest.m */; };
 		EDE946D8228D74EA0027802F /* TJBaseRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = EDE946D7228D74EA0027802F /* TJBaseRequest.m */; };
 		EDE946E2228D7B8B0027802F /* TJJoinedClassesRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = EDE946E1228D7B8B0027802F /* TJJoinedClassesRequest.m */; };
 		EDE946E6228D93630027802F /* TJRefreshHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = EDE946E5228D93630027802F /* TJRefreshHeader.m */; };
@@ -84,6 +85,8 @@
 		EDD77751228E9C01006730B1 /* TJMyClassDetailView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TJMyClassDetailView.m; sourceTree = "<group>"; };
 		EDD77754228ED0D9006730B1 /* UIImage+Ex.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+Ex.h"; sourceTree = "<group>"; };
 		EDD77755228ED0D9006730B1 /* UIImage+Ex.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Ex.m"; sourceTree = "<group>"; };
+		EDD77757228F0A93006730B1 /* TJCreateSignRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TJCreateSignRequest.h; sourceTree = "<group>"; };
+		EDD77758228F0A93006730B1 /* TJCreateSignRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TJCreateSignRequest.m; sourceTree = "<group>"; };
 		EDE946D6228D74EA0027802F /* TJBaseRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TJBaseRequest.h; sourceTree = "<group>"; };
 		EDE946D7228D74EA0027802F /* TJBaseRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TJBaseRequest.m; sourceTree = "<group>"; };
 		EDE946E0228D7B8B0027802F /* TJJoinedClassesRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TJJoinedClassesRequest.h; sourceTree = "<group>"; };
@@ -288,6 +291,8 @@
 				EDE946ED228DA7BF0027802F /* TJCreateClassRequest.m */,
 				EDD77743228E9217006730B1 /* TJMyCreatedClassesRequest.h */,
 				EDD77744228E9217006730B1 /* TJMyCreatedClassesRequest.m */,
+				EDD77757228F0A93006730B1 /* TJCreateSignRequest.h */,
+				EDD77758228F0A93006730B1 /* TJCreateSignRequest.m */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -478,6 +483,7 @@
 				EDD77756228ED0D9006730B1 /* UIImage+Ex.m in Sources */,
 				EDFFE057228BD92900A039DF /* TJUser.m in Sources */,
 				3D07B748227DD42F00596994 /* TJLoginView.m in Sources */,
+				EDD77759228F0A93006730B1 /* TJCreateSignRequest.m in Sources */,
 				ED6A1093228BD55800E533B2 /* TJSignClassCell.m in Sources */,
 				EDD77752228E9C01006730B1 /* TJMyClassDetailView.m in Sources */,
 				3D5BDC21227C617F00C32105 /* main.m in Sources */,

@@ -16,6 +16,7 @@
     if (self) {
         self.params = @{
                         @"name" : name ?: @"",
+                        @"ac" : @"addClass",
                         };
     }
     return self;

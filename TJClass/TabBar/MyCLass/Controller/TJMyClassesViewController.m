@@ -100,10 +100,15 @@
         request.successBlock = ^(id  _Nonnull result) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 TJGroup *group = [TJGroup yy_modelWithDictionary:result[@"data"]];
-                [self.groups addObject:group];
-                [self.tableView reloadData];
-                [SVProgressHUD showSuccessWithStatus:[NSString stringWithFormat:@"%@(%@)\n创建成功", group.groupName, group.groupId]];
-                [SVProgressHUD dismissWithDelay:1];
+                if (group) {
+                    [self.groups addObject:group];
+                    [self.tableView reloadData];
+                    [SVProgressHUD showSuccessWithStatus:[NSString stringWithFormat:@"%@(%@)\n创建成功", group.groupName, group.groupId]];
+                    [SVProgressHUD dismissWithDelay:1];
+                } else {
+                    [SVProgressHUD showSuccessWithStatus:[NSString stringWithFormat:@"%@\n创建失败", self.createClassTextField.text]];
+                    [SVProgressHUD dismissWithDelay:1];
+                }
             });
         };
         request.failureBlock = ^(NSError * _Nonnull error) {

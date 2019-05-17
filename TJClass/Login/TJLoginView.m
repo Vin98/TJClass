@@ -139,7 +139,15 @@ static const CGFloat TJLoginViewLoginButtonHeight = 50.f;
         _userNameTextField.backgroundColor = [UIColor clearColor];
         _userNameTextField.textColor = [UIColor lightTextColor];
         _userNameTextField.tintColor = [UIColor lightTextColor];
-        _userNameTextField.placeholder = @"请输入学号";
+        
+        NSDictionary *attributes = @{
+                                     NSForegroundColorAttributeName : [[UIColor lightTextColor] colorWithAlphaComponent:0.3],
+                                     NSFontAttributeName:_userNameTextField.font
+                                     };
+        NSAttributedString *attrString = [[NSAttributedString alloc] initWithString:@"请输入学号"
+                                                                         attributes:attributes];
+        _userNameTextField.attributedPlaceholder = attrString;
+        
         _userNameTextField.clearButtonMode = UITextFieldViewModeAlways;
         _userNameTextField.returnKeyType = UIReturnKeyNext;
         _userNameTextField.delegate = self;
@@ -154,7 +162,13 @@ static const CGFloat TJLoginViewLoginButtonHeight = 50.f;
         _passwordTextField.backgroundColor = [UIColor clearColor];
         _passwordTextField.textColor = [UIColor lightTextColor];
         _passwordTextField.tintColor = [UIColor lightTextColor];
-        _passwordTextField.placeholder = @"请输入密码";
+        NSDictionary *attributes = @{
+                                     NSForegroundColorAttributeName : [[UIColor lightTextColor] colorWithAlphaComponent:0.3],
+                                     NSFontAttributeName:_passwordTextField.font
+                                     };
+        NSAttributedString *attrString = [[NSAttributedString alloc] initWithString:@"请输入密码"
+                                                                         attributes:attributes];
+        _passwordTextField.attributedPlaceholder = attrString;
         _passwordTextField.secureTextEntry = YES;
         _passwordTextField.clearButtonMode = UITextFieldViewModeAlways;
         _passwordTextField.returnKeyType = UIReturnKeyGo;
