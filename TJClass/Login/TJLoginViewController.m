@@ -1,6 +1,6 @@
 //
 //  TJLoginViewController.m
-//  TJClass
+//  TJGroup
 //
 //  Created by 李佳乐 on 2019/5/3.
 //  Copyright © 2019 Jiale Li. All rights reserved.
@@ -55,7 +55,6 @@
 //            }];
 //        }
 //    }];
-
     [SVProgressHUD showSuccessWithStatus:@"登录成功"];
     [SVProgressHUD dismissWithDelay:0.5 completion:^{
         TJMainViewController *mainViewController = TJMainViewController.new;

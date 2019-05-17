@@ -1,6 +1,6 @@
 //
 //  TJMineViewController.m
-//  TJClass
+//  TJGroup
 //
 //  Created by Vin Lee on 2019/5/14.
 //  Copyright © 2019 Jiale Li. All rights reserved.
@@ -14,7 +14,6 @@ static const NSUInteger TJMineCellRecordCellIndex = 0;
 @interface TJMineViewController ()
 
 @property (nonatomic, strong) TJMineHeaderView *headerView;
-//@property (nonatomic, strong) 
 
 @end
 

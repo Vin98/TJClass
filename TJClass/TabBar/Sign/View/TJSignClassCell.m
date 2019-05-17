@@ -1,6 +1,6 @@
 //
 //  TJSignClassCell.m
-//  TJClass
+//  TJGroup
 //
 //  Created by Vin Lee on 2019/5/15.
 //  Copyright © 2019 Jiale Li. All rights reserved.
@@ -15,6 +15,7 @@ static const CGFloat TJSignClassAvatarDiameter = 60.f;
 @property (nonatomic, strong) UIImageView *avatarView;
 @property (nonatomic, strong) UILabel *nameLabel;
 @property (nonatomic, strong) UIImageView *signView;
+@property (nonatomic, strong)UILabel *placeholderLabel;;
 
 @end
 
@@ -51,6 +52,7 @@ static const CGFloat TJSignClassAvatarDiameter = 60.f;
         make.size.mas_equalTo(CGSizeMake(25, 25));
     }];
     UIView *bottomLine = UIView.new;
+    bottomLine.backgroundColor = [UIColor colorWithWhite:0 alpha:0.2];
     [self.contentView addSubview:bottomLine];
     [bottomLine mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(self.nameLabel.mas_left);
@@ -86,25 +88,46 @@ static const CGFloat TJSignClassAvatarDiameter = 60.f;
     return _signView;
 }
 
-- (void)setCls:(TJClass *)cls {
-    self.nameLabel.text = cls.className;
+- (UILabel *)placeholderLabel {
+    if (!_placeholderLabel) {
+        _placeholderLabel = UILabel.new;
+        _placeholderLabel.font = [UIFont boldSystemFontOfSize:30];
+        _placeholderLabel.textColor = [UIColor whiteColor];
+        _placeholderLabel.contentMode = UIViewContentModeCenter;
+    }
+    return _placeholderLabel;
+}
+
+- (void)setCls:(TJGroup *)cls {
+    self.nameLabel.text = cls.groupName;
     if (!cls.coverUrl) {
-        [self setCoverWithText:cls.className];
+        [self setCoverWithText:cls.groupName];
+    } else {
+        [self.placeholderLabel removeFromSuperview];
+        self.avatarView.backgroundColor = [UIColor clearColor];
     }
 }
 
 - (void)setCoverWithText:(NSString *)text {
-    [self.avatarView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
-    UILabel *coverLabel = UILabel.new;
+    if (!self.placeholderLabel.superview) {
+        [self.avatarView addSubview:self.placeholderLabel];
+        [self.placeholderLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.center.mas_equalTo(self.avatarView.center);
+        }];
+    }
     self.avatarView.backgroundColor = THEME_COLOR;
-    coverLabel.font = [UIFont boldSystemFontOfSize:40];
-    coverLabel.text = [text substringToIndex:1];
-    coverLabel.textColor = [UIColor whiteColor];
-    coverLabel.contentMode = UIViewContentModeCenter;
-    [self.avatarView addSubview:coverLabel];
-    [coverLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.center.mas_equalTo(self.avatarView.center);
-    }];
+    self.placeholderLabel.text = [text substringToIndex:1];
+    [self.placeholderLabel sizeToFit];
+}
+
+- (void)setHighlighted:(BOOL)highlighted animated:(BOOL)animated {
+    [super setHighlighted:highlighted animated:animated];
+    self.avatarView.backgroundColor = THEME_COLOR;
+}
+
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
+    [super setSelected:selected animated:animated];
+    self.avatarView.backgroundColor = THEME_COLOR;
 }
 
 @end

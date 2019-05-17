@@ -1,6 +1,6 @@
 //
-//  TJClass.h
-//  TJClass
+//  TJGroup.h
+//  TJGroup
 //
 //  Created by Vin Lee on 2019/5/15.
 //  Copyright © 2019 Jiale Li. All rights reserved.
@@ -11,10 +11,10 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface TJClass : NSObject <YYModel>
+@interface TJGroup : NSObject <YYModel>
 
-@property (nonatomic, copy) NSString *classId;
-@property (nonatomic, copy) NSString *className;
+@property (nonatomic, copy) NSString *groupId;
+@property (nonatomic, copy) NSString *groupName;
 @property (nonatomic, copy) NSArray <TJUser *> *users;
 @property (nonatomic, strong) TJUser *creater;
 @property (nonatomic, copy) NSString *coverUrl;

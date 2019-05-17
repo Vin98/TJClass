@@ -1,6 +1,6 @@
 //
 //  TJLoginView.m
-//  TJClass
+//  TJGroup
 //
 //  Created by 李佳乐 on 2019/5/4.
 //  Copyright © 2019 Jiale Li. All rights reserved.
@@ -166,7 +166,8 @@ static const CGFloat TJLoginViewLoginButtonHeight = 50.f;
 - (UIButton *)loginButton {
     if (!_loginButton) {
         _loginButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        _loginButton.backgroundColor = THEME_COLOR;
+        UIColor *color = THEME_COLOR;
+        [_loginButton setBackgroundImage:[UIImage imageWithColor:color] forState:UIControlStateNormal];
         _loginButton.layer.cornerRadius = TJLoginViewLoginButtonHeight / 2;
         _loginButton.layer.masksToBounds = YES;
         [_loginButton setTitle:@"登录" forState:UIControlStateNormal];
