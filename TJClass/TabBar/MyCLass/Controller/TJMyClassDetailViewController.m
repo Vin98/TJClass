@@ -28,13 +28,18 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    self.edgesForExtendedLayout = UIRectEdgeBottom;
+    self.edgesForExtendedLayout = UIRectEdgeBottom | UIRectEdgeTop;
     self.title = self.group.groupName ?: @"班级";
     self.navigationController.navigationBar.translucent = NO;
     self.tabBarController.tabBar.translucent = NO;
     self.view.backgroundColor = [UIColor whiteColor];
     self.detailView = [[TJMyClassDetailView alloc] initWithFrame:self.view.bounds];
     [self.view addSubview:self.detailView];
+}
+
+- (void)viewDidLayoutSubviews {
+    [super viewDidLayoutSubviews];
+    self.detailView.frame = self.view.bounds;
 }
 
 @end

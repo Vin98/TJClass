@@ -79,12 +79,15 @@
 
 @end
 
-@implementation TJMyClassDetailView
+@implementation TJMyClassDetailView {
+    CGFloat _signButtonDiameter;
+}
 
 - (instancetype)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
+        _signButtonDiameter = SCREEN_WIDTH / 3;
         self.detailMessageCell = ({
             TJMyClassDetailCell *cell = TJMyClassDetailCell.new;
             [cell setBackgroundImage:[UIImage imageWithColor:[UIColor colorWithWhite:0 alpha:0.1]] forState:UIControlStateHighlighted | UIControlStateHighlighted];
@@ -98,6 +101,19 @@
             cell.textLabel.text = @"签到记录";
             [cell addTarget:self action:@selector(gotoRecordPage:) forControlEvents:UIControlEventTouchUpInside];
             cell;
+        });
+        
+        self.signButton = ({
+            UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+            UIColor *color = THEME_COLOR;
+            [button setBackgroundImage:[UIImage imageWithColor:color] forState:UIControlStateNormal];
+            [button setTitle:@"点击\n签到" forState:UIControlStateNormal];
+            [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+            button.titleLabel.numberOfLines = 2;
+            button.layer.cornerRadius = _signButtonDiameter / 2;
+            button.layer.masksToBounds = YES;
+            [button addTarget:self action:@selector(sign:) forControlEvents:UIControlEventTouchUpInside];
+            button;
         });
         [self configUI];
     }
@@ -115,6 +131,13 @@
     [stackView addArrangedSubview:self.signRecordCell];
     
     [self addSubview:stackView];
+    [self addSubview:self.signButton];
+}
+
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    self.signButton.bounds = CGRectMake(0, 0, _signButtonDiameter, _signButtonDiameter);
+    self.signButton.center = self.center;
 }
 
 #pragma mark - action
@@ -123,6 +146,10 @@
 }
 
 - (void)gotoRecordPage:(id)sender {
+    
+}
+
+- (void)sign:(id)sender {
     
 }
 
