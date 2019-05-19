@@ -7,6 +7,10 @@
 //
 
 #import "TJUserManager.h"
+#import <MJExtension/MJExtension.h>
+
+#define TJCurrentUserKey @"TJCurrentUserKey"
+#define TJCurrentUserLoginStateKey @"TJCurrentUserLoginStateKey"
 
 @implementation TJUserManager
 
@@ -29,8 +33,31 @@
 }
 
 - (void)updateUserName:(NSString *)name phoneNumber:(NSString *)phoneNumber {
-    CurrentUser.userName = name;
-    CurrentUser.phoneNumber = phoneNumber;
+    TJUser *user = self.currentUser;
+    user.userName = name;
+    user.phoneNumber = phoneNumber;
+    self.currentUser = user;
+}
+
+- (void)setCurrentUser:(TJUser *)currentUser {
+    NSDictionary *userInfo = currentUser.mj_keyValues;
+    [[NSUserDefaults standardUserDefaults] setObject:userInfo forKey:TJCurrentUserKey];
+}
+
+- (TJUser *)currentUser {
+    NSDictionary *userInfo = [[NSUserDefaults standardUserDefaults] objectForKey:TJCurrentUserKey];
+    TJUser *user = [TJUser mj_objectWithKeyValues:userInfo];
+    return user;
+}
+
+- (void)setLogedIn:(BOOL)logedIn {
+    NSNumber *state = [NSNumber numberWithBool:logedIn];
+    [[NSUserDefaults standardUserDefaults] setObject:state forKey:TJCurrentUserLoginStateKey];
+}
+
+- (BOOL)logedIn {
+    NSNumber *state = [[NSUserDefaults standardUserDefaults] objectForKey:TJCurrentUserLoginStateKey];
+    return [state boolValue];
 }
 
 @end

@@ -16,10 +16,26 @@
 		3D5BDC21227C617F00C32105 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D5BDC20227C617F00C32105 /* main.m */; };
 		3D5BDC29227C61D800C32105 /* TJLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D5BDC28227C61D800C32105 /* TJLoginViewController.m */; };
 		AF54525A013F4192395B92C0 /* libPods-TJClass.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6626802D42FCCD2A548C9016 /* libPods-TJClass.a */; };
+		ED0BD19822902554006852D4 /* TJGetNIMTokenRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = ED0BD19722902554006852D4 /* TJGetNIMTokenRequest.m */; };
+		ED0BD19B22905927006852D4 /* TJSessionListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED0BD19A22905927006852D4 /* TJSessionListViewController.m */; };
+		ED0BD19E22905C55006852D4 /* TJAddFriendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED0BD19D22905C55006852D4 /* TJAddFriendViewController.m */; };
+		ED0BD1A12290616D006852D4 /* TJAddFriendCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ED0BD1A02290616D006852D4 /* TJAddFriendCell.m */; };
+		ED0BD1A4229061CD006852D4 /* UIView+Ex.m in Sources */ = {isa = PBXBuildFile; fileRef = ED0BD1A3229061CD006852D4 /* UIView+Ex.m */; };
+		ED0BD1A72291484A006852D4 /* TJGroupListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED0BD1A62291484A006852D4 /* TJGroupListViewController.m */; };
+		ED0BD1AA229177DC006852D4 /* TJSessionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED0BD1A9229177DC006852D4 /* TJSessionViewController.m */; };
+		ED0BD1AD22917EFC006852D4 /* TJSessionUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = ED0BD1AC22917EFC006852D4 /* TJSessionUtil.m */; };
 		ED3E078E228AF60F00BEC88F /* TJMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED3E078D228AF60F00BEC88F /* TJMainViewController.m */; };
 		ED3E0791228AFB8600BEC88F /* TJMineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED3E0790228AFB8600BEC88F /* TJMineViewController.m */; };
 		ED3E0795228B06D900BEC88F /* TJMineHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = ED3E0794228B06D900BEC88F /* TJMineHeaderView.m */; };
 		ED3E0798228B09DE00BEC88F /* TJLoginViewPresentAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = ED3E0797228B09DE00BEC88F /* TJLoginViewPresentAnimation.m */; };
+		ED58F036229188D8000298A0 /* TJContactUtilCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ED58F035229188D8000298A0 /* TJContactUtilCell.m */; };
+		ED58F03922918A39000298A0 /* TJGroupedDataCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = ED58F03822918A39000298A0 /* TJGroupedDataCollection.m */; };
+		ED58F03C22918AEE000298A0 /* TJGroupedContacts.m in Sources */ = {isa = PBXBuildFile; fileRef = ED58F03B22918AEE000298A0 /* TJGroupedContacts.m */; };
+		ED58F03F22918B2B000298A0 /* TJContactDataMember.m in Sources */ = {isa = PBXBuildFile; fileRef = ED58F03E22918B2B000298A0 /* TJContactDataMember.m */; };
+		ED58F04222918B9A000298A0 /* TJSpellingCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = ED58F04122918B9A000298A0 /* TJSpellingCenter.m */; };
+		ED58F04522918C58000298A0 /* TJPinyinConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = ED58F04422918C58000298A0 /* TJPinyinConverter.m */; };
+		ED58F04C22918DB7000298A0 /* TJContactViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED58F04B22918DB7000298A0 /* TJContactViewController.m */; };
+		ED58F04F22918E81000298A0 /* TJContactUtilItem.m in Sources */ = {isa = PBXBuildFile; fileRef = ED58F04E22918E81000298A0 /* TJContactUtilItem.m */; };
 		ED6A108C228BD04200E533B2 /* TJMineCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ED6A108B228BD04100E533B2 /* TJMineCell.m */; };
 		ED6A108F228BD53700E533B2 /* TJSignViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED6A108E228BD53700E533B2 /* TJSignViewController.m */; };
 		ED6A1093228BD55800E533B2 /* TJSignClassCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ED6A1092228BD55800E533B2 /* TJSignClassCell.m */; };
@@ -59,6 +75,23 @@
 		3D8DD4A02287B67C00C03985 /* TJCommonHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TJCommonHeader.h; sourceTree = "<group>"; };
 		6626802D42FCCD2A548C9016 /* libPods-TJClass.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TJClass.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		90F5E285D8424ACCF509F98C /* Pods-TJClass.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TJClass.release.xcconfig"; path = "Pods/Target Support Files/Pods-TJClass/Pods-TJClass.release.xcconfig"; sourceTree = "<group>"; };
+		ED0BD19622902554006852D4 /* TJGetNIMTokenRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TJGetNIMTokenRequest.h; sourceTree = "<group>"; };
+		ED0BD19722902554006852D4 /* TJGetNIMTokenRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TJGetNIMTokenRequest.m; sourceTree = "<group>"; };
+		ED0BD19922905927006852D4 /* TJSessionListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TJSessionListViewController.h; sourceTree = "<group>"; };
+		ED0BD19A22905927006852D4 /* TJSessionListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TJSessionListViewController.m; sourceTree = "<group>"; };
+		ED0BD19C22905C55006852D4 /* TJAddFriendViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TJAddFriendViewController.h; sourceTree = "<group>"; };
+		ED0BD19D22905C55006852D4 /* TJAddFriendViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TJAddFriendViewController.m; sourceTree = "<group>"; };
+		ED0BD19F2290616D006852D4 /* TJAddFriendCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TJAddFriendCell.h; sourceTree = "<group>"; };
+		ED0BD1A02290616D006852D4 /* TJAddFriendCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TJAddFriendCell.m; sourceTree = "<group>"; };
+		ED0BD1A2229061CD006852D4 /* UIView+Ex.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+Ex.h"; sourceTree = "<group>"; };
+		ED0BD1A3229061CD006852D4 /* UIView+Ex.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+Ex.m"; sourceTree = "<group>"; };
+		ED0BD1A52291484A006852D4 /* TJGroupListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TJGroupListViewController.h; sourceTree = "<group>"; };
+		ED0BD1A62291484A006852D4 /* TJGroupListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TJGroupListViewController.m; sourceTree = "<group>"; };
+		ED0BD1A8229177DC006852D4 /* TJSessionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TJSessionViewController.h; sourceTree = "<group>"; };
+		ED0BD1A9229177DC006852D4 /* TJSessionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TJSessionViewController.m; sourceTree = "<group>"; };
+		ED0BD1AB22917EFC006852D4 /* TJSessionUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TJSessionUtil.h; sourceTree = "<group>"; };
+		ED0BD1AC22917EFC006852D4 /* TJSessionUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TJSessionUtil.m; sourceTree = "<group>"; };
+		ED0BD1AE229186EF006852D4 /* TJContactDefines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TJContactDefines.h; sourceTree = "<group>"; };
 		ED3E078C228AF60F00BEC88F /* TJMainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TJMainViewController.h; sourceTree = "<group>"; };
 		ED3E078D228AF60F00BEC88F /* TJMainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TJMainViewController.m; sourceTree = "<group>"; };
 		ED3E078F228AFB8600BEC88F /* TJMineViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TJMineViewController.h; sourceTree = "<group>"; };
@@ -67,6 +100,22 @@
 		ED3E0794228B06D900BEC88F /* TJMineHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TJMineHeaderView.m; sourceTree = "<group>"; };
 		ED3E0796228B09DE00BEC88F /* TJLoginViewPresentAnimation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TJLoginViewPresentAnimation.h; sourceTree = "<group>"; };
 		ED3E0797228B09DE00BEC88F /* TJLoginViewPresentAnimation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TJLoginViewPresentAnimation.m; sourceTree = "<group>"; };
+		ED58F034229188D8000298A0 /* TJContactUtilCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TJContactUtilCell.h; sourceTree = "<group>"; };
+		ED58F035229188D8000298A0 /* TJContactUtilCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TJContactUtilCell.m; sourceTree = "<group>"; };
+		ED58F03722918A39000298A0 /* TJGroupedDataCollection.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TJGroupedDataCollection.h; sourceTree = "<group>"; };
+		ED58F03822918A39000298A0 /* TJGroupedDataCollection.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TJGroupedDataCollection.m; sourceTree = "<group>"; };
+		ED58F03A22918AEE000298A0 /* TJGroupedContacts.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TJGroupedContacts.h; sourceTree = "<group>"; };
+		ED58F03B22918AEE000298A0 /* TJGroupedContacts.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TJGroupedContacts.m; sourceTree = "<group>"; };
+		ED58F03D22918B2B000298A0 /* TJContactDataMember.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TJContactDataMember.h; sourceTree = "<group>"; };
+		ED58F03E22918B2B000298A0 /* TJContactDataMember.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TJContactDataMember.m; sourceTree = "<group>"; };
+		ED58F04022918B9A000298A0 /* TJSpellingCenter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TJSpellingCenter.h; sourceTree = "<group>"; };
+		ED58F04122918B9A000298A0 /* TJSpellingCenter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TJSpellingCenter.m; sourceTree = "<group>"; };
+		ED58F04322918C58000298A0 /* TJPinyinConverter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TJPinyinConverter.h; sourceTree = "<group>"; };
+		ED58F04422918C58000298A0 /* TJPinyinConverter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TJPinyinConverter.m; sourceTree = "<group>"; };
+		ED58F04A22918DB7000298A0 /* TJContactViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TJContactViewController.h; sourceTree = "<group>"; };
+		ED58F04B22918DB7000298A0 /* TJContactViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TJContactViewController.m; sourceTree = "<group>"; };
+		ED58F04D22918E81000298A0 /* TJContactUtilItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TJContactUtilItem.h; sourceTree = "<group>"; };
+		ED58F04E22918E81000298A0 /* TJContactUtilItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TJContactUtilItem.m; sourceTree = "<group>"; };
 		ED6A108A228BD04100E533B2 /* TJMineCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TJMineCell.h; sourceTree = "<group>"; };
 		ED6A108B228BD04100E533B2 /* TJMineCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TJMineCell.m; sourceTree = "<group>"; };
 		ED6A108D228BD53700E533B2 /* TJSignViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TJSignViewController.h; sourceTree = "<group>"; };
@@ -143,6 +192,16 @@
 				3D07B744227DCA9800596994 /* TJChatCell.m */,
 				EDFFE055228BD92900A039DF /* TJUser.h */,
 				EDFFE056228BD92900A039DF /* TJUser.m */,
+				ED0BD19922905927006852D4 /* TJSessionListViewController.h */,
+				ED0BD19A22905927006852D4 /* TJSessionListViewController.m */,
+				ED0BD19C22905C55006852D4 /* TJAddFriendViewController.h */,
+				ED0BD19D22905C55006852D4 /* TJAddFriendViewController.m */,
+				ED0BD19F2290616D006852D4 /* TJAddFriendCell.h */,
+				ED0BD1A02290616D006852D4 /* TJAddFriendCell.m */,
+				ED0BD1A8229177DC006852D4 /* TJSessionViewController.h */,
+				ED0BD1A9229177DC006852D4 /* TJSessionViewController.m */,
+				ED0BD1AB22917EFC006852D4 /* TJSessionUtil.h */,
+				ED0BD1AC22917EFC006852D4 /* TJSessionUtil.m */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
@@ -190,6 +249,8 @@
 				3D07B747227DD42F00596994 /* TJLoginView.m */,
 				ED3E0796228B09DE00BEC88F /* TJLoginViewPresentAnimation.h */,
 				ED3E0797228B09DE00BEC88F /* TJLoginViewPresentAnimation.m */,
+				ED0BD19622902554006852D4 /* TJGetNIMTokenRequest.h */,
+				ED0BD19722902554006852D4 /* TJGetNIMTokenRequest.m */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -224,6 +285,30 @@
 				ED6A108B228BD04100E533B2 /* TJMineCell.m */,
 			);
 			path = Mine;
+			sourceTree = "<group>";
+		};
+		ED58F04622918D4C000298A0 /* Contact */ = {
+			isa = PBXGroup;
+			children = (
+				ED0BD1AE229186EF006852D4 /* TJContactDefines.h */,
+				ED58F034229188D8000298A0 /* TJContactUtilCell.h */,
+				ED58F035229188D8000298A0 /* TJContactUtilCell.m */,
+				ED58F03722918A39000298A0 /* TJGroupedDataCollection.h */,
+				ED58F03822918A39000298A0 /* TJGroupedDataCollection.m */,
+				ED58F03A22918AEE000298A0 /* TJGroupedContacts.h */,
+				ED58F03B22918AEE000298A0 /* TJGroupedContacts.m */,
+				ED58F03D22918B2B000298A0 /* TJContactDataMember.h */,
+				ED58F03E22918B2B000298A0 /* TJContactDataMember.m */,
+				ED58F04022918B9A000298A0 /* TJSpellingCenter.h */,
+				ED58F04122918B9A000298A0 /* TJSpellingCenter.m */,
+				ED58F04322918C58000298A0 /* TJPinyinConverter.h */,
+				ED58F04422918C58000298A0 /* TJPinyinConverter.m */,
+				ED58F04A22918DB7000298A0 /* TJContactViewController.h */,
+				ED58F04B22918DB7000298A0 /* TJContactViewController.m */,
+				ED58F04D22918E81000298A0 /* TJContactUtilItem.h */,
+				ED58F04E22918E81000298A0 /* TJContactUtilItem.m */,
+			);
+			path = Contact;
 			sourceTree = "<group>";
 		};
 		ED6A1090228BD53D00E533B2 /* Sign */ = {
@@ -271,6 +356,8 @@
 				EDE946E5228D93630027802F /* TJRefreshHeader.m */,
 				EDD77754228ED0D9006730B1 /* UIImage+Ex.h */,
 				EDD77755228ED0D9006730B1 /* UIImage+Ex.m */,
+				ED0BD1A2229061CD006852D4 /* UIView+Ex.h */,
+				ED0BD1A3229061CD006852D4 /* UIView+Ex.m */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -304,6 +391,8 @@
 				EDE946E9228D98FD0027802F /* TJMyClassesViewController.m */,
 				EDD7774D228E9B5E006730B1 /* TJMyClassDetailViewController.h */,
 				EDD7774E228E9B5E006730B1 /* TJMyClassDetailViewController.m */,
+				ED0BD1A52291484A006852D4 /* TJGroupListViewController.h */,
+				ED0BD1A62291484A006852D4 /* TJGroupListViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -351,6 +440,7 @@
 				EDD7774C228E9AF2006730B1 /* Controller */,
 				EDD7774B228E9AE1006730B1 /* Network */,
 				EDD77753228E9C06006730B1 /* View */,
+				ED58F04622918D4C000298A0 /* Contact */,
 			);
 			path = MyCLass;
 			sourceTree = "<group>";
@@ -367,6 +457,7 @@
 				3D5BDC0B227C617D00C32105 /* Frameworks */,
 				3D5BDC0C227C617D00C32105 /* Resources */,
 				C8AEA690BDAB9C9CFF5F724B /* [CP] Copy Pods Resources */,
+				5FA13068B6B032D8CBFC9C9D /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -444,6 +535,28 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		5FA13068B6B032D8CBFC9C9D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TJClass/Pods-TJClass-frameworks.sh",
+				"${PODS_ROOT}/NIMSDK_LITE/NIMSDK/NIMSDK.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NIMSDK.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TJClass/Pods-TJClass-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		C8AEA690BDAB9C9CFF5F724B /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -454,14 +567,20 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-TJClass/Pods-TJClass-resources.sh",
 				"${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle",
+				"${PODS_ROOT}/NIMKit/NIMKit/Resources/NIMKitEmoticon.bundle",
+				"${PODS_ROOT}/NIMKit/NIMKit/Resources/NIMKitResource.bundle",
 				"${PODS_ROOT}/SVProgressHUD/SVProgressHUD/SVProgressHUD.bundle",
+				"${PODS_ROOT}/TZImagePickerController/TZImagePickerController/TZImagePickerController/TZImagePickerController.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MJRefresh.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/NIMKitEmoticon.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/NIMKitResource.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SVProgressHUD.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/TZImagePickerController.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -480,27 +599,43 @@
 				EDD7774F228E9B5E006730B1 /* TJMyClassDetailViewController.m in Sources */,
 				ED6A108C228BD04200E533B2 /* TJMineCell.m in Sources */,
 				3D07B745227DCA9800596994 /* TJChatCell.m in Sources */,
+				ED58F03C22918AEE000298A0 /* TJGroupedContacts.m in Sources */,
+				ED0BD1AA229177DC006852D4 /* TJSessionViewController.m in Sources */,
 				EDD77756228ED0D9006730B1 /* UIImage+Ex.m in Sources */,
 				EDFFE057228BD92900A039DF /* TJUser.m in Sources */,
 				3D07B748227DD42F00596994 /* TJLoginView.m in Sources */,
 				EDD77759228F0A93006730B1 /* TJCreateSignRequest.m in Sources */,
 				ED6A1093228BD55800E533B2 /* TJSignClassCell.m in Sources */,
+				ED58F04C22918DB7000298A0 /* TJContactViewController.m in Sources */,
 				EDD77752228E9C01006730B1 /* TJMyClassDetailView.m in Sources */,
 				3D5BDC21227C617F00C32105 /* main.m in Sources */,
+				ED0BD1A4229061CD006852D4 /* UIView+Ex.m in Sources */,
 				3D07B740227DC5DE00596994 /* TJChatViewController.m in Sources */,
 				3D5BDC13227C617D00C32105 /* AppDelegate.m in Sources */,
 				EDE946EE228DA7BF0027802F /* TJCreateClassRequest.m in Sources */,
+				ED58F036229188D8000298A0 /* TJContactUtilCell.m in Sources */,
+				ED58F04522918C58000298A0 /* TJPinyinConverter.m in Sources */,
 				EDE946E6228D93630027802F /* TJRefreshHeader.m in Sources */,
 				EDD77749228E96B9006730B1 /* TJUserManager.m in Sources */,
+				ED0BD19B22905927006852D4 /* TJSessionListViewController.m in Sources */,
 				ED3E078E228AF60F00BEC88F /* TJMainViewController.m in Sources */,
+				ED0BD19E22905C55006852D4 /* TJAddFriendViewController.m in Sources */,
 				ED3E0791228AFB8600BEC88F /* TJMineViewController.m in Sources */,
 				EDE946E2228D7B8B0027802F /* TJJoinedClassesRequest.m in Sources */,
+				ED0BD19822902554006852D4 /* TJGetNIMTokenRequest.m in Sources */,
+				ED58F03922918A39000298A0 /* TJGroupedDataCollection.m in Sources */,
 				EDE946D8228D74EA0027802F /* TJBaseRequest.m in Sources */,
 				EDD77745228E9217006730B1 /* TJMyCreatedClassesRequest.m in Sources */,
+				ED0BD1A12290616D006852D4 /* TJAddFriendCell.m in Sources */,
+				ED58F04F22918E81000298A0 /* TJContactUtilItem.m in Sources */,
+				ED0BD1AD22917EFC006852D4 /* TJSessionUtil.m in Sources */,
+				ED58F03F22918B2B000298A0 /* TJContactDataMember.m in Sources */,
 				ED3E0795228B06D900BEC88F /* TJMineHeaderView.m in Sources */,
+				ED0BD1A72291484A006852D4 /* TJGroupListViewController.m in Sources */,
 				ED3E0798228B09DE00BEC88F /* TJLoginViewPresentAnimation.m in Sources */,
 				ED6A108F228BD53700E533B2 /* TJSignViewController.m in Sources */,
 				EDE946EA228D98FD0027802F /* TJMyClassesViewController.m in Sources */,
+				ED58F04222918B9A000298A0 /* TJSpellingCenter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

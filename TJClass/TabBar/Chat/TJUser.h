@@ -15,9 +15,11 @@ typedef NS_ENUM(NSUInteger, TJUserType) {
     TJUserTypeTeacher = 1,
 };
 
-@interface TJUser : NSObject
+@interface TJUser : NSObject <NSCoding>
 
-@property (nonatomic, assign) NSUInteger userId;
+@property (nonatomic, copy) NSString *userId;
+@property (nonatomic, copy) NSString *accid;
+@property (nonatomic, copy) NSString *token;
 @property (nonatomic, copy) NSString *userAccount;   //学号、工号
 @property (nonatomic, copy) NSString *userName;
 @property (nonatomic, copy) NSString *avatarUrl;

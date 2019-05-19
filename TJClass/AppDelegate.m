@@ -9,8 +9,9 @@
 #import "AppDelegate.h"
 #import "TJLoginViewController.h"
 #import "TJMainViewController.h"
+#import <NIMSDK/NIMSDK.h>
 
-@interface AppDelegate ()
+@interface AppDelegate () <NIMLoginManagerDelegate>
 
 @end
 
@@ -19,10 +20,16 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    [self setupNIMSDK];
+    [self loginToNIM];
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-    //未登录
-    self.window.rootViewController = TJLoginViewController.new;
-//    self.window.rootViewController = TJMainViewController.new;
+    
+    if ([TJUserManager manager].logedIn) {
+        self.window.rootViewController = TJMainViewController.new;
+    } else {
+        self.window.rootViewController = TJLoginViewController.new;
+    }
     
     self.window.backgroundColor = [UIColor clearColor];
     [self.window makeKeyAndVisible];
@@ -58,5 +65,37 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
+- (void)setupNIMSDK {
+    NSString *appKey        = @"14b1a6ebed8d8cb2262d150cebe15b15";
+    NIMSDKOption *option = [NIMSDKOption optionWithAppKey:appKey];
+//    option.apnsCername      = @"your APNs cer name";
+//    option.pkCername        = @"your pushkit cer name";
+    [[NIMSDK sharedSDK] registerWithOption:option];
+}
+
+- (void)loginToNIM {
+    TJUser *user = [TJUserManager manager].currentUser;
+    if (user.accid && user.token) {
+        NIMAutoLoginData *data = NIMAutoLoginData.new;
+        data.account = user.accid;
+        data.token = user.token;
+        [[NIMSDK sharedSDK].loginManager addDelegate:self];
+        [[[NIMSDK sharedSDK] loginManager] autoLogin:data];
+        
+//        [[[NIMSDK sharedSDK] loginManager] login:user.accid token:user.token completion:^(NSError * _Nullable error) {
+//            NSLog(@"%@", error);
+//        }];
+    }
+}
+
+- (void)onLogin:(NIMLoginStep)step {
+    if (step == NIMLoginStepLoginOK) {
+        NSLog(@"登录 NIM 成功");
+    }
+}
+
+- (void)onAutoLoginFailed:(NSError *)error {
+    NSLog(@"自动登录 NIM 失败");
+}
 
 @end

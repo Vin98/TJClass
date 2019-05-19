@@ -16,6 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface TJUserManager : NSObject
 
 @property (nonatomic, strong) TJUser *currentUser;
+@property (nonatomic, assign) BOOL logedIn;
 
 + (instancetype)manager;
 

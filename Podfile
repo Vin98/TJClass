@@ -14,5 +14,8 @@ target 'TJClass' do
   pod 'Reachability', '~> 3.2'
   pod 'YYModel', '~> 1.0.4'
   pod 'SVProgressHUD'
+  pod 'NIMSDK_LITE'
+  pod 'NIMKit/Lite'
+  pod 'MJExtension'
 
 end

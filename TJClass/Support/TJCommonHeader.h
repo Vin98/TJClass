@@ -12,7 +12,11 @@
 #import <Masonry/Masonry.h>
 #import <SVProgressHUD/SVProgressHUD.h>
 #import <YYModel/YYModel.h>
+#import <NIMSDK/NIMSDK.h>
+#import <NIMKit/NIMKit.h>
 #import "UIImage+Ex.h"
+#import "UIView+Ex.h"
+#import "TJUserManager.h"
 
 
 #endif /* TJCommonHeader_h */

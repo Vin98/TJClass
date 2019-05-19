@@ -151,6 +151,7 @@ static const CGFloat TJLoginViewLoginButtonHeight = 50.f;
         _userNameTextField.clearButtonMode = UITextFieldViewModeAlways;
         _userNameTextField.returnKeyType = UIReturnKeyNext;
         _userNameTextField.delegate = self;
+        [_userNameTextField addTarget:self action:@selector(textFieldTextDidChange:) forControlEvents:UIControlEventEditingChanged];
     }
     return _userNameTextField;
 }
@@ -173,6 +174,7 @@ static const CGFloat TJLoginViewLoginButtonHeight = 50.f;
         _passwordTextField.clearButtonMode = UITextFieldViewModeAlways;
         _passwordTextField.returnKeyType = UIReturnKeyGo;
         _passwordTextField.delegate = self;
+        [_passwordTextField addTarget:self action:@selector(textFieldTextDidChange:) forControlEvents:UIControlEventEditingChanged];
     }
     return _passwordTextField;
 }
@@ -186,6 +188,7 @@ static const CGFloat TJLoginViewLoginButtonHeight = 50.f;
         _loginButton.layer.masksToBounds = YES;
         [_loginButton setTitle:@"登录" forState:UIControlStateNormal];
         [_loginButton addTarget:self action:@selector(loginButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+        _loginButton.enabled = NO;
     }
     return _loginButton;
 }
@@ -222,6 +225,18 @@ static const CGFloat TJLoginViewLoginButtonHeight = 50.f;
         [self loginButtonClicked:nil];
     }
     return YES;
+}
+
+- (void)textFieldTextDidChange:(id)sender {
+    if (self.userName.length > 0 && self.password.length > 0) {
+        self.loginButton.enabled = YES;
+    } else {
+        self.loginButton.enabled = NO;
+    }
+}
+
+- (void)setLoginButtonEnable:(BOOL)enable {
+    self.loginButton.enabled = enable;
 }
 
 @end

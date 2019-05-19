@@ -52,5 +52,7 @@
 	<false/>
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>thaks</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>同课堂想访问您的相册</string>
 </dict>
 </plist>

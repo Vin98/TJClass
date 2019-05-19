@@ -15,20 +15,36 @@ PODS:
   - AFNetworking/UIKit (3.2.1):
     - AFNetworking/NSURLSession
   - FLEX (2.4.0)
+  - M80AttributedLabel (1.6.3)
   - Masonry (1.1.0)
+  - MJExtension (3.0.17)
   - MJRefresh (3.2.0)
+  - NIMKit/Core (2.11.9):
+    - M80AttributedLabel (~> 1.6.3)
+    - SDWebImage (~> 4.4.6)
+    - Toast (~> 3.0)
+    - TZImagePickerController (~> 3.0.7)
+  - NIMKit/Lite (2.11.9):
+    - NIMKit/Core
+    - NIMSDK_LITE (~> 6.4.1)
+  - NIMSDK_LITE (6.4.1)
   - Reachability (3.2)
-  - SDWebImage (5.0.2):
-    - SDWebImage/Core (= 5.0.2)
-  - SDWebImage/Core (5.0.2)
+  - SDWebImage (4.4.6):
+    - SDWebImage/Core (= 4.4.6)
+  - SDWebImage/Core (4.4.6)
   - SVProgressHUD (2.2.5)
+  - Toast (3.1.0)
+  - TZImagePickerController (3.0.9)
   - YYModel (1.0.4)
 
 DEPENDENCIES:
   - AFNetworking (~> 3.2.0)
   - FLEX (~> 2.4.0)
   - Masonry
+  - MJExtension
   - MJRefresh
+  - NIMKit/Lite
+  - NIMSDK_LITE
   - Reachability (~> 3.2)
   - SDWebImage
   - SVProgressHUD
@@ -38,23 +54,35 @@ SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - AFNetworking
     - FLEX
+    - M80AttributedLabel
     - Masonry
+    - MJExtension
     - MJRefresh
+    - NIMKit
+    - NIMSDK_LITE
     - Reachability
     - SDWebImage
     - SVProgressHUD
+    - Toast
+    - TZImagePickerController
     - YYModel
 
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
   FLEX: bd1a39e55b56bb413b6f1b34b3c10a0dc44ef079
+  M80AttributedLabel: d06543195d3e451d2ea62ad76d04aa9cea7661d4
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
+  MJExtension: 74ec83124a68891619fb7ba9c5c811bbf1691076
   MJRefresh: ed450d6eb9d3346a2cb033ab7eb6de090aeef437
+  NIMKit: e380213fe4a21c63bc31b00185dca4ed531d7f71
+  NIMSDK_LITE: 365dbf1efee70805e522ce179ac07678b297e7a1
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
-  SDWebImage: 6764b5fa0f73c203728052955dbefa2bf1f33282
+  SDWebImage: 3f3f0c02f09798048c47a5ed0a13f17b063572d8
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
+  Toast: 14a93686d6c8bfe2727afd342414e35660a8a1f3
+  TZImagePickerController: ea3e906af8caa7088f612ad673feb73cc6aa6bfc
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
 
-PODFILE CHECKSUM: 87140c388c18b0e51d587bdf6ed7144034e10ea6
+PODFILE CHECKSUM: dd08ae5caa9527c34cc9f0590760a3056aa7fa41
 
 COCOAPODS: 1.6.1

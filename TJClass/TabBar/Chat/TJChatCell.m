@@ -24,8 +24,8 @@
     if (self) {
         [self configUI];
         self.avatarView.image = [UIImage imageNamed:@"placeholderAvatar"];
-        self.nameLabel.text = @"宝宝";
-        self.messageLabel.text = @"我想你啦";
+        self.nameLabel.text = @"hhhh";
+        self.messageLabel.text = @"啦啦啦啦啦啦啦啦啦啦啦";
         self.timeLabel.text = @"now";
     }
     return self;
