@@ -7,10 +7,17 @@
  */
 
 #import "SDWebImageCompat.h"
-#import "SDImageGIFCoder.h"
 
-@interface SDImageGIFCoder ()
+#if SD_MAC
 
-- (float)sd_frameDurationAtIndex:(NSUInteger)index source:(nonnull CGImageSourceRef)source;
+#import <Cocoa/Cocoa.h>
+
+@interface NSImage (WebCache)
+
+- (CGImageRef)CGImage;
+- (NSArray<NSImage *> *)images;
+- (BOOL)isGIF;
 
 @end
+
+#endif

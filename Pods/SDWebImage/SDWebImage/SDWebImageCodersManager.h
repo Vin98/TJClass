@@ -7,7 +7,7 @@
  */
 
 #import <Foundation/Foundation.h>
-#import "SDImageCoder.h"
+#import "SDWebImageCoder.h"
 
 /**
  Global object holding the array of coders, so that we avoid passing them from object to object.
@@ -17,42 +17,42 @@
  
  Note: the `coders` getter will return the coders in their reversed order
  Example:
- - by default we internally set coders = `IOCoder`, `GIFCoder`, `APNGCoder`
- - calling `coders` will return `@[IOCoder, GIFCoder, APNGCoder]`
+ - by default we internally set coders = `IOCoder`, `WebPCoder`. (`GIFCoder` is not recommended to add only if you want to get GIF support without `FLAnimatedImage`)
+ - calling `coders` will return `@[WebPCoder, IOCoder]`
  - call `[addCoder:[MyCrazyCoder new]]`
- - calling `coders` now returns `@[IOCoder, GIFCoder, APNGCoder, MyCrazyCoder]`
+ - calling `coders` now returns `@[MyCrazyCoder, WebPCoder, IOCoder]`
  
  Coders
  ------
- A coder must conform to the `SDImageCoder` protocol or even to `SDProgressiveImageCoder` if it supports progressive decoding
+ A coder must conform to the `SDWebImageCoder` protocol or even to `SDWebImageProgressiveCoder` if it supports progressive decoding
  Conformance is important because that way, they will implement `canDecodeFromData` or `canEncodeToFormat`
  Those methods are called on each coder in the array (using the priority order) until one of them returns YES.
  That means that coder can decode that data / encode to that format
  */
-@interface SDImageCodersManager : NSObject <SDImageCoder>
+@interface SDWebImageCodersManager : NSObject<SDWebImageCoder>
 
 /**
- Returns the global shared coders manager instance.
+ Shared reusable instance
  */
-@property (nonatomic, class, readonly, nonnull) SDImageCodersManager *sharedManager;
++ (nonnull instancetype)sharedInstance;
 
 /**
  All coders in coders manager. The coders array is a priority queue, which means the later added coder will have the highest priority
  */
-@property (nonatomic, copy, nullable) NSArray<id<SDImageCoder>> *coders;
+@property (nonatomic, copy, readwrite, nullable) NSArray<id<SDWebImageCoder>> *coders;
 
 /**
  Add a new coder to the end of coders array. Which has the highest priority.
 
  @param coder coder
  */
-- (void)addCoder:(nonnull id<SDImageCoder>)coder;
+- (void)addCoder:(nonnull id<SDWebImageCoder>)coder;
 
 /**
  Remove a coder in the coders array.
 
  @param coder coder
  */
-- (void)removeCoder:(nonnull id<SDImageCoder>)coder;
+- (void)removeCoder:(nonnull id<SDWebImageCoder>)coder;
 
 @end
