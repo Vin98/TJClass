@@ -10,7 +10,9 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface TJMineViewController : UITableViewController
+@interface TJMineViewController : UIViewController
+
+@property(nonatomic, strong) UITableView *tableView;
 
 @end
 

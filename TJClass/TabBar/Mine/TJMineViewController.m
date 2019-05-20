@@ -8,44 +8,110 @@
 
 #import "TJMineViewController.h"
 #import "TJMineHeaderView.h"
+#import <NIMKit/NIMCommonTableData.h>
+#import <NIMKit/NIMCommonTableDelegate.h>
 
 static const NSUInteger TJMineCellRecordCellIndex = 0;
 
-@interface TJMineViewController ()
+@interface TJMineViewController () <NIMUserManagerDelegate>
 
 @property (nonatomic, strong) TJMineHeaderView *headerView;
+@property (nonatomic, strong) NSArray *data;
+@property (nonatomic, strong) NIMCommonTableDelegate *delegator;
 
 @end
 
 @implementation TJMineViewController
 
+- (void)viewDidLayoutSubviews {
+    if (@available(iOS 11.0, *)) {
+        CGFloat height = self.view.safeAreaInsets.bottom;
+        self.tableView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height - height);
+    }
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"我";
+    self.navigationItem.title = @"设置";
+    self.view.backgroundColor = [UIColor whiteColor];
+    [self buildData];
+    weakify(self);
+    self.delegator = [[NIMCommonTableDelegate alloc] initWithTableData:^NSArray *{
+        strongify(self);
+        return self.data;
+    }];
+    self.tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
+    [self.view addSubview:self.tableView];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    self.tableView.sectionIndexBackgroundColor = [UIColor clearColor];
     self.tableView.tableHeaderView = self.headerView;
+    self.tableView.delegate   = self.delegator;
+    self.tableView.dataSource = self.delegator;
+    
+    [[NIMSDK sharedSDK].userManager addDelegate:self];
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 1;
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [SVProgressHUD dismiss];
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([UITableViewCell class])];
-    if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"TJMineCell"];
-    }
-    switch (indexPath.row) {
-        case TJMineCellRecordCellIndex:
-            cell.imageView.image = [UIImage imageNamed:@"login_password"];
-            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-            cell.textLabel.text = @"我的签到记录";
-            break;
-            
-        default:
-            break;
-    }
-    return cell;
+- (void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [[NIMSDK sharedSDK].userManager removeDelegate:self];
+}
+
+- (void)buildData{
+    BOOL disableRemoteNotification = [UIApplication sharedApplication].currentUserNotificationSettings.types == UIUserNotificationTypeNone;
+    
+    NIMPushNotificationSetting *setting = [[NIMSDK sharedSDK].apnsManager currentSetting];
+    BOOL enableNoDisturbing     = setting.noDisturbing;
+    NSString *noDisturbingStart = [NSString stringWithFormat:@"%02zd:%02zd",setting.noDisturbingStartH,setting.noDisturbingStartM];
+    NSString *noDisturbingEnd   = [NSString stringWithFormat:@"%02zd:%02zd",setting.noDisturbingEndH,setting.noDisturbingEndM];
+    
+    NSArray *data = @[
+                      @{
+                          HeaderTitle : @"",
+                          RowContent : @[
+                                  @{
+                                      Title : @"我的签到记录",
+                                      CellAction : @"onActionMySignRecord:",
+                                      ShowAccessory : @(YES)
+                                      }
+                                  ]
+                          },
+                      @{
+                          HeaderTitle:@"",
+                          RowContent :@[
+                                  @{
+                                      Title      :@"消息提醒",
+                                      DetailTitle:disableRemoteNotification ? @"未开启" : @"已开启",
+                                      ForbidSelect : @(YES)
+                                      },
+                                  ],
+                          FooterTitle:@"在iPhone的“设置- 通知中心”功能，找到应用程序“同课堂”，可以更改云信新消息提醒设置"
+                          },
+                      @{
+                          HeaderTitle:@"",
+                          RowContent :@[
+                                  @{
+                                      Title        : @"通知显示详情",
+                                      CellClass    : @"TJSettingSwitcherCell",
+                                      ExtraInfo    : @(setting.type == NIMPushNotificationDisplayTypeDetail? YES : NO),
+                                      CellAction   : @"onActionShowPushDetailSetting:",
+                                      ForbidSelect : @(YES)
+                                      },
+                                  ],
+                          FooterTitle:@""
+                          },
+                      ];
+    self.data = [NIMCommonTableSection sectionsWithData:data];
+}
+
+- (void)refreshData{
+    [self buildData];
+    [self.tableView reloadData];
 }
 
 - (TJMineHeaderView *)headerView {
@@ -53,6 +119,26 @@ static const NSUInteger TJMineCellRecordCellIndex = 0;
         _headerView = [[TJMineHeaderView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, [TJMineHeaderView typicalHeight])];
     }
     return _headerView;
+}
+
+#pragma mark - Action
+
+- (void)onActionMySignRecord:(id)sender {
+    
+}
+
+- (void)onActionShowPushDetailSetting:(UISwitch *)switcher
+{
+    NIMPushNotificationSetting *setting = [NIMSDK sharedSDK].apnsManager.currentSetting;
+    setting.type = switcher.on? NIMPushNotificationDisplayTypeDetail : NIMPushNotificationDisplayTypeNoDetail;
+    [[NIMSDK sharedSDK].apnsManager updateApnsSetting:setting completion:^(NSError * _Nullable error) {
+        if (error)
+        {
+            [SVProgressHUD showErrorWithStatus:@"更新失败"];
+            [SVProgressHUD dismissWithDelay:2.f];
+            switcher.on = !switcher.on;
+        }
+    }];
 }
 
 @end

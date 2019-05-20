@@ -8,6 +8,7 @@
 
 #import "TJSessionViewController.h"
 #import "TJSessionUtil.h"
+#import "TJPersonCardViewController.h"
 #import <NIMKit/NIMNormalTeamCardViewController.h>
 
 @interface TJSessionViewController () <NIMNormalTeamCardVCProtocol>
@@ -30,12 +31,12 @@
     [enterTeamCard sizeToFit];
     UIBarButtonItem *enterTeamCardItem = [[UIBarButtonItem alloc] initWithCustomView:enterTeamCard];
     
-//    UIButton *infoBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-//    [infoBtn addTarget:self action:@selector(enterPersonInfoCard:) forControlEvents:UIControlEventTouchUpInside];
-//    [infoBtn setImage:[UIImage imageNamed:@"icon_session_info_normal"] forState:UIControlStateNormal];
-//    [infoBtn setImage:[UIImage imageNamed:@"icon_session_info_pressed"] forState:UIControlStateHighlighted];
-//    [infoBtn sizeToFit];
-//    UIBarButtonItem *enterUInfoItem = [[UIBarButtonItem alloc] initWithCustomView:infoBtn];
+    UIButton *infoBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [infoBtn addTarget:self action:@selector(enterPersonInfoCard:) forControlEvents:UIControlEventTouchUpInside];
+    [infoBtn setImage:[UIImage imageNamed:@"icon_session_info_normal"] forState:UIControlStateNormal];
+    [infoBtn setImage:[UIImage imageNamed:@"icon_session_info_pressed"] forState:UIControlStateHighlighted];
+    [infoBtn sizeToFit];
+    UIBarButtonItem *enterUInfoItem = [[UIBarButtonItem alloc] initWithCustomView:infoBtn];
 //
 //    UIButton *historyBtn = [UIButton buttonWithType:UIButtonTypeCustom];
 //    [historyBtn addTarget:self action:@selector(enterHistory:) forControlEvents:UIControlEventTouchUpInside];
@@ -47,6 +48,8 @@
     if (self.session.sessionType == NIMSessionTypeTeam)
     {
         self.navigationItem.rightBarButtonItem = enterTeamCardItem;
+    } else {
+        self.navigationItem.rightBarButtonItem = enterUInfoItem;
     }
 }
 
@@ -56,6 +59,11 @@
     BOOL isTop = [TJSessionUtil recentSessionIsMark:recent type:TJRecentSessionMarkTypeTop ];
     NIMNormalTeamCardViewController *vc = [[NIMNormalTeamCardViewController alloc] initWithTeam:team exConfig:@{kNIMNormalTeamCardConfigTopKey:@(isTop)}];
     vc.delegate = self;
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+- (void)enterPersonInfoCard:(id)sender {
+    TJPersonCardViewController *vc = [[TJPersonCardViewController alloc] initWithSession:self.session];
     [self.navigationController pushViewController:vc animated:YES];
 }
 

@@ -24,6 +24,8 @@
 		ED0BD1A72291484A006852D4 /* TJGroupListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED0BD1A62291484A006852D4 /* TJGroupListViewController.m */; };
 		ED0BD1AA229177DC006852D4 /* TJSessionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED0BD1A9229177DC006852D4 /* TJSessionViewController.m */; };
 		ED0BD1AD22917EFC006852D4 /* TJSessionUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = ED0BD1AC22917EFC006852D4 /* TJSessionUtil.m */; };
+		ED131F8622926C1B000D9E4B /* TJPersonCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED131F8522926C1B000D9E4B /* TJPersonCardViewController.m */; };
+		ED131F8922926DEB000D9E4B /* TJSettingSwitcherCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ED131F8822926DEB000D9E4B /* TJSettingSwitcherCell.m */; };
 		ED3E078E228AF60F00BEC88F /* TJMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED3E078D228AF60F00BEC88F /* TJMainViewController.m */; };
 		ED3E0791228AFB8600BEC88F /* TJMineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED3E0790228AFB8600BEC88F /* TJMineViewController.m */; };
 		ED3E0795228B06D900BEC88F /* TJMineHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = ED3E0794228B06D900BEC88F /* TJMineHeaderView.m */; };
@@ -92,6 +94,10 @@
 		ED0BD1AB22917EFC006852D4 /* TJSessionUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TJSessionUtil.h; sourceTree = "<group>"; };
 		ED0BD1AC22917EFC006852D4 /* TJSessionUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TJSessionUtil.m; sourceTree = "<group>"; };
 		ED0BD1AE229186EF006852D4 /* TJContactDefines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TJContactDefines.h; sourceTree = "<group>"; };
+		ED131F8422926C1B000D9E4B /* TJPersonCardViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TJPersonCardViewController.h; sourceTree = "<group>"; };
+		ED131F8522926C1B000D9E4B /* TJPersonCardViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TJPersonCardViewController.m; sourceTree = "<group>"; };
+		ED131F8722926DEB000D9E4B /* TJSettingSwitcherCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TJSettingSwitcherCell.h; sourceTree = "<group>"; };
+		ED131F8822926DEB000D9E4B /* TJSettingSwitcherCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TJSettingSwitcherCell.m; sourceTree = "<group>"; };
 		ED3E078C228AF60F00BEC88F /* TJMainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TJMainViewController.h; sourceTree = "<group>"; };
 		ED3E078D228AF60F00BEC88F /* TJMainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TJMainViewController.m; sourceTree = "<group>"; };
 		ED3E078F228AFB8600BEC88F /* TJMineViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TJMineViewController.h; sourceTree = "<group>"; };
@@ -202,6 +208,10 @@
 				ED0BD1A9229177DC006852D4 /* TJSessionViewController.m */,
 				ED0BD1AB22917EFC006852D4 /* TJSessionUtil.h */,
 				ED0BD1AC22917EFC006852D4 /* TJSessionUtil.m */,
+				ED131F8422926C1B000D9E4B /* TJPersonCardViewController.h */,
+				ED131F8522926C1B000D9E4B /* TJPersonCardViewController.m */,
+				ED131F8722926DEB000D9E4B /* TJSettingSwitcherCell.h */,
+				ED131F8822926DEB000D9E4B /* TJSettingSwitcherCell.m */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
@@ -602,6 +612,7 @@
 				ED58F03C22918AEE000298A0 /* TJGroupedContacts.m in Sources */,
 				ED0BD1AA229177DC006852D4 /* TJSessionViewController.m in Sources */,
 				EDD77756228ED0D9006730B1 /* UIImage+Ex.m in Sources */,
+				ED131F8622926C1B000D9E4B /* TJPersonCardViewController.m in Sources */,
 				EDFFE057228BD92900A039DF /* TJUser.m in Sources */,
 				3D07B748227DD42F00596994 /* TJLoginView.m in Sources */,
 				EDD77759228F0A93006730B1 /* TJCreateSignRequest.m in Sources */,
@@ -616,6 +627,7 @@
 				ED58F036229188D8000298A0 /* TJContactUtilCell.m in Sources */,
 				ED58F04522918C58000298A0 /* TJPinyinConverter.m in Sources */,
 				EDE946E6228D93630027802F /* TJRefreshHeader.m in Sources */,
+				ED131F8922926DEB000D9E4B /* TJSettingSwitcherCell.m in Sources */,
 				EDD77749228E96B9006730B1 /* TJUserManager.m in Sources */,
 				ED0BD19B22905927006852D4 /* TJSessionListViewController.m in Sources */,
 				ED3E078E228AF60F00BEC88F /* TJMainViewController.m in Sources */,
