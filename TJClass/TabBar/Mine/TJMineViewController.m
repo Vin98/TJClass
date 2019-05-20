@@ -10,6 +10,7 @@
 #import "TJMineHeaderView.h"
 #import <NIMKit/NIMCommonTableData.h>
 #import <NIMKit/NIMCommonTableDelegate.h>
+#import <UserNotifications/UserNotifications.h>
 
 static const NSUInteger TJMineCellRecordCellIndex = 0;
 
@@ -63,12 +64,15 @@ static const NSUInteger TJMineCellRecordCellIndex = 0;
 }
 
 - (void)buildData{
-    BOOL disableRemoteNotification = [UIApplication sharedApplication].currentUserNotificationSettings.types == UIUserNotificationTypeNone;
+//    BOOL disableRemoteNotification = [UIApplication sharedApplication].currentUserNotificationSettings.types == UIUserNotificationTypeNone;
     
+    __block BOOL disableRemoteNotification = YES;
+    [[UNUserNotificationCenter currentNotificationCenter] getNotificationSettingsWithCompletionHandler:^(UNNotificationSettings * _Nonnull settings) {
+        if (settings.authorizationStatus != UNAuthorizationStatusNotDetermined) {
+            disableRemoteNotification = settings.alertSetting == UNAlertStyleNone;
+        }
+    }];
     NIMPushNotificationSetting *setting = [[NIMSDK sharedSDK].apnsManager currentSetting];
-    BOOL enableNoDisturbing     = setting.noDisturbing;
-    NSString *noDisturbingStart = [NSString stringWithFormat:@"%02zd:%02zd",setting.noDisturbingStartH,setting.noDisturbingStartM];
-    NSString *noDisturbingEnd   = [NSString stringWithFormat:@"%02zd:%02zd",setting.noDisturbingEndH,setting.noDisturbingEndM];
     
     NSArray *data = @[
                       @{
@@ -90,7 +94,7 @@ static const NSUInteger TJMineCellRecordCellIndex = 0;
                                       ForbidSelect : @(YES)
                                       },
                                   ],
-                          FooterTitle:@"在iPhone的“设置- 通知中心”功能，找到应用程序“同课堂”，可以更改云信新消息提醒设置"
+                          FooterTitle:@"在iPhone的“设置- 通知中心”功能，找到应用程序“同课堂”，可以更改同课堂新消息提醒设置"
                           },
                       @{
                           HeaderTitle:@"",
