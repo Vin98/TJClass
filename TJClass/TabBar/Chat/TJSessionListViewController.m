@@ -9,6 +9,7 @@
 #import "TJSessionListViewController.h"
 #import "TJAddFriendViewController.h"
 #import "TJSessionViewController.h"
+#import "TJSessionUtil.h"
 #import <NIMKit/NIMContactSelectConfig.h>
 #import <NIMKit/NIMContactSelectViewController.h>
 
@@ -26,6 +27,21 @@
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(onOpera:)];
     [[[NIMSDK sharedSDK] loginManager] addDelegate:self];
     
+    self.emptyTipLabel = [[UILabel alloc] init];
+    self.emptyTipLabel.text = @"还没有会话，在通讯录中找个人聊聊吧";
+    [self.emptyTipLabel sizeToFit];
+    self.emptyTipLabel.hidden = self.recentSessions.count;
+    [self.view addSubview:self.emptyTipLabel];
+    
+}
+
+- (void)dealloc{
+    [[NIMSDK sharedSDK].loginManager removeDelegate:self];
+}
+
+- (void)refresh {
+    [super refresh];
+    self.emptyTipLabel.hidden = self.recentSessions.count;
 }
 
 - (void)onSelectedRecent:(NIMRecentSession *)recent atIndexPath:(NSIndexPath *)indexPath {
@@ -39,6 +55,69 @@
 {
     id<NIMConversationManager> manager = [[NIMSDK sharedSDK] conversationManager];
     [manager deleteRecentSession:recent];
+}
+
+- (void)onTopRecentAtIndexPath:(NIMRecentSession *)recent
+                   atIndexPath:(NSIndexPath *)indexPath
+                         isTop:(BOOL)isTop
+{
+    if (isTop)
+    {
+        [TJSessionUtil removeRecentSessionMark:recent.session type:TJRecentSessionMarkTypeTop];
+    }
+    else
+    {
+        [TJSessionUtil addRecentSessionMark:recent.session type:TJRecentSessionMarkTypeTop];
+    }
+    self.recentSessions = [self customSortRecents:self.recentSessions];
+    [self.tableView reloadData];
+}
+
+- (NSMutableArray *)customSortRecents:(NSMutableArray *)recentSessions
+{
+    NSMutableArray *array = [[NSMutableArray alloc] initWithArray:recentSessions];
+    [array sortUsingComparator:^NSComparisonResult(NIMRecentSession *obj1, NIMRecentSession *obj2) {
+        NSInteger score1 = [TJSessionUtil recentSessionIsMark:obj1 type:TJRecentSessionMarkTypeTop]? 10 : 0;
+        NSInteger score2 = [TJSessionUtil recentSessionIsMark:obj2 type:TJRecentSessionMarkTypeTop]? 10 : 0;
+        if (obj1.lastMessage.timestamp > obj2.lastMessage.timestamp)
+        {
+            score1 += 1;
+        }
+        else if (obj1.lastMessage.timestamp < obj2.lastMessage.timestamp)
+        {
+            score2 += 1;
+        }
+        if (score1 == score2)
+        {
+            return NSOrderedSame;
+        }
+        return score1 > score2? NSOrderedAscending : NSOrderedDescending;
+    }];
+    return array;
+}
+
+#pragma mark - UITableViewDelegate
+
+- (NSArray<UITableViewRowAction *> *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    weakify(self);
+    UITableViewRowAction *delete = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDefault title:@"删除" handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
+        strongify(self);
+        NIMRecentSession *recentSession = self.recentSessions[indexPath.row];
+        [self onDeleteRecentAtIndexPath:recentSession atIndexPath:indexPath];
+        [tableView setEditing:NO animated:YES];
+    }];
+    
+    
+    NIMRecentSession *recentSession = self.recentSessions[indexPath.row];
+    BOOL isTop = [TJSessionUtil recentSessionIsMark:recentSession type:TJRecentSessionMarkTypeTop];
+    UITableViewRowAction *top = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleNormal title:isTop?@"取消置顶":@"置顶" handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
+        strongify(self);
+        [self onTopRecentAtIndexPath:recentSession atIndexPath:indexPath isTop:isTop];
+        [tableView setEditing:NO animated:YES];
+    }];
+    
+    return @[delete,top];
 }
 
 #pragma mark - NIMLoginManagerDelegate

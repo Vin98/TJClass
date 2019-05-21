@@ -7,13 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "TJGroup.h"
+#import "TJSign.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface TJSignClassCell : UITableViewCell
 
-@property (nonatomic, strong) TJGroup *cls;
+@property (nonatomic, strong) TJSign *sign;
 
 @end
 

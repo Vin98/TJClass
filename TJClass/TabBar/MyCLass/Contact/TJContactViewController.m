@@ -18,7 +18,7 @@
 //#import "UIActionSheet+TJBlock.h"
 //#import "TJSearchTeamViewController.h"
 #import "TJAddFriendViewController.h"
-//#import "TJPersonalCardViewController.h"
+#import "TJPersonalCardViewController.h"
 //#import "UIAlertView+TJBlock.h"
 //#import "SVProgressHUD.h"
 #import "TJContactUtilCell.h"
@@ -114,28 +114,13 @@ NIMEventSubscribeManagerDelegate> {
        @{
            contactCellUtilIcon:@"icon_notification_normal",
            contactCellUtilTitle:@"验证消息",
-           contactCellUtilVC:@"TJSystemNotificationViewController",
+           contactCellUtilVC:@"NTESSystemNotificationViewController",
            contactCellUtilBadge:@(systemCount)
            },
        @{
-           contactCellUtilIcon:@"icon_team_advance_normal",
-           contactCellUtilTitle:@"高级群",
-           contactCellUtilVC:@"TJAdvancedTeamListViewController"
-           },
-       @{
            contactCellUtilIcon:@"icon_team_normal_normal",
-           contactCellUtilTitle:@"讨论组",
-           contactCellUtilVC:@"TJNormalTeamListViewController"
-           },
-       @{
-           contactCellUtilIcon:@"icon_blacklist_normal",
-           contactCellUtilTitle:@"黑名单",
-           contactCellUtilVC:@"TJBlackListViewController"
-           },
-       @{
-           contactCellUtilIcon:@"icon_computer_normal",
-           contactCellUtilTitle:@"我的电脑",
-           contactCellUtilSelectorName:@"onEnterMyComputer"
+           contactCellUtilTitle:@"群聊",
+           contactCellUtilVC:@"TJGroupListViewController"
            },
        ] mutableCopy];
     
@@ -248,10 +233,11 @@ NIMEventSubscribeManagerDelegate> {
     else if (contactItem.vcName.length) {
         Class clazz = NSClassFromString(contactItem.vcName);
         UIViewController * vc = [[clazz alloc] initWithNibName:nil bundle:nil];
+        vc.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:vc animated:YES];
     }else if([contactItem respondsToSelector:@selector(userId)]){
         NSString * friendId   = contactItem.userId;
-//        [self enterPersonalCard:friendId];
+        [self enterPersonalCard:friendId];
     }
     
 }
@@ -421,10 +407,10 @@ NIMEventSubscribeManagerDelegate> {
 
 
 #pragma mark - Private
-//- (void)enterPersonalCard:(NSString *)userId{
-//    TJPersonalCardViewController *vc = [[TJPersonalCardViewController alloc] initWithUserId:userId];
-//    [self.navigationController pushViewController:vc animated:YES];
-//}
+- (void)enterPersonalCard:(NSString *)userId{
+    TJPersonalCardViewController *vc = [[TJPersonalCardViewController alloc] initWithUserId:userId];
+    [self.navigationController pushViewController:vc animated:YES];
+}
 
 
 - (void)presentMemberSelector:(ContactSelectFinishBlock) block{

@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface TJSessionListViewController : NIMSessionListViewController
 
+@property (nonatomic,strong) UILabel *emptyTipLabel;
+
 @end
 
 NS_ASSUME_NONNULL_END

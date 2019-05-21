@@ -22,17 +22,19 @@
     // Override point for customization after application launch.
     
     [self setupNIMSDK];
-    [self loginToNIM];
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     
     if ([TJUserManager manager].logedIn) {
         self.window.rootViewController = TJMainViewController.new;
+//        [self loginToNIM];
+        [self mockLogin];
     } else {
         self.window.rootViewController = TJLoginViewController.new;
     }
     
     self.window.backgroundColor = [UIColor clearColor];
     [self.window makeKeyAndVisible];
+    [[UINavigationBar appearance] setTintColor:THEME_COLOR];
     
     [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
     return YES;
@@ -86,6 +88,23 @@
 //            NSLog(@"%@", error);
 //        }];
     }
+}
+
+- (void)mockLogin {
+    TJUser *user = TJUser.new;
+    user.userId = @"1550000";
+    user.accid = @"1550000";
+    user.token = @"d5bfe3dfb5fd25ebd260a3482a875318";
+//    [[[NIMSDK sharedSDK] loginManager] login:user.accid token:user.token completion:^(NSError * _Nullable error) {
+//        NSLog(@"mock login success");
+//        [TJUserManager manager].logedIn = YES;
+//    }];
+    [TJUserManager manager].currentUser = user;
+    NIMAutoLoginData *data = NIMAutoLoginData.new;
+    data.account = user.accid;
+    data.token = user.token;
+    [[NIMSDK sharedSDK].loginManager addDelegate:self];
+    [[[NIMSDK sharedSDK] loginManager] autoLogin:data];
 }
 
 - (void)onLogin:(NIMLoginStep)step {

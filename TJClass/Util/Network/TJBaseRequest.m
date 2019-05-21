@@ -31,7 +31,8 @@
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     NSMutableDictionary *params = self.params.mutableCopy ?: @{}.mutableCopy;
     if (!params[@"userId"]) {
-        [params addEntriesFromDictionary:@{@"userId" : @1012}];
+        NSString *userId = [TJUserManager manager].currentUser.userId;
+        [params addEntriesFromDictionary:@{@"userId" : userId ?: @""}];
     }
     switch (self.requestType) {
         case TJReauestTypeGet:

@@ -105,8 +105,7 @@
         
         self.signButton = ({
             UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-            UIColor *color = THEME_COLOR;
-            [button setBackgroundImage:[UIImage imageWithColor:color] forState:UIControlStateNormal];
+            [button setBackgroundImage:[UIImage imageWithColor:THEME_COLOR] forState:UIControlStateNormal];
             [button setTitle:@"发起\n签到" forState:UIControlStateNormal];
             [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
             button.titleLabel.numberOfLines = 2;

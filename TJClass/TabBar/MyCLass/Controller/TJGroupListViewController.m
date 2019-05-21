@@ -7,6 +7,7 @@
 //
 
 #import "TJGroupListViewController.h"
+#import "TJSessionViewController.h"
 
 @interface TJGroupListViewController () <NIMTeamManagerDelegate>
 
@@ -48,7 +49,8 @@
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     NIMTeam *team = [_myTeams objectAtIndex:indexPath.row];
     NIMSession *session = [NIMSession session:team.teamId type:NIMSessionTypeTeam];
-    NIMSessionViewController *vc = [[NIMSessionViewController alloc] initWithSession:session];
+    TJSessionViewController *vc = [[TJSessionViewController alloc] initWithSession:session];
+    vc.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:vc animated:YES];
 }
 

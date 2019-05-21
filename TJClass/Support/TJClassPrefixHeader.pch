@@ -12,8 +12,9 @@
 //屏幕宽高
 #define SCREEN_WIDTH   [UIScreen mainScreen].bounds.size.width
 #define SCREENH_HEIGHT [UIScreen mainScreen].bounds.size.height
+#define UISreenWidthScale   SCREEN_WIDTH / 320
 #define ONEPIXEL       1 / [UIScreen mainScreen].scale
-#define THEME_COLOR    [UIColor colorWithRed:68.f / 255.f green:152.f / 255.f blue:153.f / 255.f alpha:1];
+#define THEME_COLOR    [UIColor colorWithRed:68.f / 255.f green:152.f / 255.f blue:153.f / 255.f alpha:1]
 
 #define SuppressPerformSelectorLeakWarning(Stuff) \
 do { \

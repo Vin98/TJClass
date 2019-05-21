@@ -1,8 +1,8 @@
 //
-//  TJSignViewController.h
-//  TJGroup
+//  TJSignRecordViewController.h
+//  TJClass
 //
-//  Created by Vin Lee on 2019/5/15.
+//  Created by Vin Lee on 2019/5/21.
 //  Copyright © 2019 Jiale Li. All rights reserved.
 //
 
@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface TJSignViewController : UITableViewController
+@interface TJSignRecordViewController : UITableViewController
 
 @property (nonatomic, strong) NIMSession *session;
 

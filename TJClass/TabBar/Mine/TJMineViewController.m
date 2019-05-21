@@ -12,8 +12,6 @@
 #import <NIMKit/NIMCommonTableDelegate.h>
 #import <UserNotifications/UserNotifications.h>
 
-static const NSUInteger TJMineCellRecordCellIndex = 0;
-
 @interface TJMineViewController () <NIMUserManagerDelegate>
 
 @property (nonatomic, strong) TJMineHeaderView *headerView;

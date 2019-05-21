@@ -8,14 +8,14 @@
 
 #import "TJSignClassCell.h"
 
-static const CGFloat TJSignClassAvatarDiameter = 60.f;
+static const CGFloat TJSignClassAvatarDiameter = 25.f;
 
 @interface TJSignClassCell()
 
 @property (nonatomic, strong) UIImageView *avatarView;
 @property (nonatomic, strong) UILabel *nameLabel;
-@property (nonatomic, strong) UIImageView *signView;
-@property (nonatomic, strong)UILabel *placeholderLabel;;
+@property (nonatomic, strong) UILabel *signStatusLabel;    //签到中/已结束
+@property (nonatomic, strong) UILabel *myStatusLabel;      //未签到/已签到
 
 @end
 
@@ -24,6 +24,39 @@ static const CGFloat TJSignClassAvatarDiameter = 60.f;
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
+        self.avatarView = ({
+            UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"icon_sign_clock"]];
+            imageView;
+        });
+        
+        self.nameLabel = ({
+            UILabel *label = UILabel.new;
+            label.font = [UIFont systemFontOfSize:15.f];
+            label;
+        });
+        
+        self.signStatusLabel = ({
+            UILabel *label = UILabel.new;
+            label.font = [UIFont systemFontOfSize:12.f];
+            label.textColor = [UIColor darkTextColor];
+            label.layer.borderWidth = ONEPIXEL;
+            label.layer.borderColor = THEME_COLOR.CGColor;
+            label.layer.cornerRadius = 6.f;
+            label.layer.masksToBounds = YES;
+            label;
+        });
+        
+        self.myStatusLabel = ({
+            UILabel *label = UILabel.new;
+            label.layer.cornerRadius = 7.f;
+            label.layer.masksToBounds = YES;
+            label.font = [UIFont systemFontOfSize:14.f];
+            label.backgroundColor = THEME_COLOR;
+            label.textColor = [UIColor whiteColor];
+            label;
+        });
+    
+        
         [self configUI];
     }
     return self;
@@ -32,7 +65,8 @@ static const CGFloat TJSignClassAvatarDiameter = 60.f;
 - (void)configUI {
     [self.contentView addSubview:self.avatarView];
     [self.contentView addSubview:self.nameLabel];
-    [self.contentView addSubview:self.signView];
+    [self.contentView addSubview:self.signStatusLabel];
+    [self.contentView addSubview:self.myStatusLabel];
     
     [self.avatarView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.top.mas_offset(10);
@@ -43,14 +77,19 @@ static const CGFloat TJSignClassAvatarDiameter = 60.f;
     [self.nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(self.avatarView.mas_right).offset(10);
         make.centerY.mas_equalTo(self.avatarView.mas_centerY);
-        make.right.mas_greaterThanOrEqualTo(10);
     }];
-    [self.signView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_greaterThanOrEqualTo(self.nameLabel.mas_right).offset(10);
-        make.right.mas_offset(-20);
-        make.centerY.mas_equalTo(self.avatarView.mas_centerY);
-        make.size.mas_equalTo(CGSizeMake(25, 25));
+    
+    [self.signStatusLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(self.nameLabel.mas_right).offset(10);
+        make.centerY.mas_equalTo(self.nameLabel.centerY);
     }];
+    
+    [self.myStatusLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_greaterThanOrEqualTo(self.signStatusLabel.mas_right).offset(10);
+        make.centerY.mas_equalTo(self.signStatusLabel.centerY);
+        make.right.mas_offset(-10);
+    }];
+    
     UIView *bottomLine = UIView.new;
     bottomLine.backgroundColor = [UIColor colorWithWhite:0 alpha:0.2];
     [self.contentView addSubview:bottomLine];
@@ -80,54 +119,44 @@ static const CGFloat TJSignClassAvatarDiameter = 60.f;
     return _nameLabel;
 }
 
-- (UIImageView *)signView {
-    if (!_signView) {
-        _signView = UIImageView.new;
-        _signView.image = [UIImage imageNamed:@"sign_uncheck"];
-    }
-    return _signView;
-}
-
-- (UILabel *)placeholderLabel {
-    if (!_placeholderLabel) {
-        _placeholderLabel = UILabel.new;
-        _placeholderLabel.font = [UIFont boldSystemFontOfSize:30];
-        _placeholderLabel.textColor = [UIColor whiteColor];
-        _placeholderLabel.contentMode = UIViewContentModeCenter;
-    }
-    return _placeholderLabel;
-}
-
-- (void)setCls:(TJGroup *)cls {
-    self.nameLabel.text = cls.groupName;
-    if (!cls.coverUrl) {
-        [self setCoverWithText:cls.groupName];
+- (void)setSign:(TJSign *)sign {
+    _sign = sign;
+    
+    NSDate *date = [NSDate dateWithTimeIntervalSince1970:sign.startTime];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"M-d HH:mm:ss"];
+    NSString *dateString = [formatter stringFromDate:date];
+    self.nameLabel.text = dateString;
+    
+    NSTimeInterval currentTime = [[NSDate date] timeIntervalSince1970];
+    BOOL didTimeOut = currentTime >= sign.endTime;
+    if (didTimeOut) {
+        self.signStatusLabel.text = @"  签到已结束  ";
     } else {
-        [self.placeholderLabel removeFromSuperview];
-        self.avatarView.backgroundColor = [UIColor clearColor];
+        self.signStatusLabel.text = @"  签到中  ";
     }
-}
-
-- (void)setCoverWithText:(NSString *)text {
-    if (!self.placeholderLabel.superview) {
-        [self.avatarView addSubview:self.placeholderLabel];
-        [self.placeholderLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.center.mas_equalTo(self.avatarView.center);
-        }];
+    
+    __block BOOL isSigned = NO;
+    [sign.signedUsers enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if ([obj isEqualToString:[NIMSDK sharedSDK].loginManager.currentAccount]) {
+            isSigned = YES;
+            *stop = YES;
+        }
+    }];
+    if (isSigned) {
+        self.myStatusLabel.text = @"  已签到  ";
+        self.myStatusLabel.backgroundColor = THEME_COLOR;
+    } else {
+        if (didTimeOut) {
+            self.myStatusLabel.text = @"  未签到  ";
+            self.myStatusLabel.backgroundColor = [UIColor redColor];
+        } else {
+            self.myStatusLabel.text = @"  点击签到  ";
+            self.myStatusLabel.backgroundColor = THEME_COLOR;
+        }
     }
-    self.avatarView.backgroundColor = THEME_COLOR;
-    self.placeholderLabel.text = [text substringToIndex:1];
-    [self.placeholderLabel sizeToFit];
-}
 
-- (void)setHighlighted:(BOOL)highlighted animated:(BOOL)animated {
-    [super setHighlighted:highlighted animated:animated];
-    self.avatarView.backgroundColor = THEME_COLOR;
-}
-
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-    self.avatarView.backgroundColor = THEME_COLOR;
+    self.userInteractionEnabled = !didTimeOut && !isSigned;
 }
 
 @end

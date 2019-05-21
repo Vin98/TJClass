@@ -50,7 +50,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     TJSignClassCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([TJSignClassCell class])];
-    cell.cls = self.groups[indexPath.row];
+//    cell.cls = self.groups[indexPath.row];
     return cell;
 }
 

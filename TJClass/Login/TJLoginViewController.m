@@ -59,19 +59,21 @@
             TJGetNIMTokenRequest *getTokenRequest = [[TJGetNIMTokenRequest alloc] initWithUserid:user.userId];
             getTokenRequest.successBlock = ^(id  _Nonnull result) {
                 NSDictionary *info =result[@"data"];
-                NSString *accid = info[@"accid"];
-                NSString *token = info[@"token"];
-                if (accid && accid.length > 0 && token && token.length > 0) {
-                    [[[NIMSDK sharedSDK] loginManager] login:accid token:token completion:^(NSError * _Nullable error) {
-                        if (error) {
-                            NSLog(@"[%@] 手动登录 NIM 失败", NSStringFromClass([self class]));
-                        } else {
-                            NSLog(@"[%@] 手动登录 NIM 成功", NSStringFromClass([self class]));
-                            user.accid = accid;
-                            user.token = token;
-                            [TJUserManager manager].currentUser = user;
-                        }
-                    }];
+                if (info) {
+                    NSString *accid = info[@"accid"];
+                    NSString *token = info[@"token"];
+                    if (accid && accid.length > 0 && token && token.length > 0) {
+                        [[[NIMSDK sharedSDK] loginManager] login:accid token:token completion:^(NSError * _Nullable error) {
+                            if (error) {
+                                NSLog(@"[%@] 手动登录 NIM 失败", NSStringFromClass([self class]));
+                            } else {
+                                NSLog(@"[%@] 手动登录 NIM 成功", NSStringFromClass([self class]));
+                                user.accid = accid;
+                                user.token = token;
+                                [TJUserManager manager].currentUser = user;
+                            }
+                        }];
+                    }
                 }
             };
             getTokenRequest.failureBlock = ^(NSError * _Nonnull error) {

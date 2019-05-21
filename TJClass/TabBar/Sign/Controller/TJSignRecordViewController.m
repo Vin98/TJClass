@@ -1,41 +1,37 @@
 //
-//  TJSignViewController.m
-//  TJGroup
+//  TJSignReecordViewController.m
+//  TJClass
 //
-//  Created by Vin Lee on 2019/5/15.
+//  Created by Vin Lee on 2019/5/21.
 //  Copyright © 2019 Jiale Li. All rights reserved.
 //
 
+#import "TJSignRecordViewController.h"
 #import "TJSignViewController.h"
 #import "TJSignClassCell.h"
 #import "TJGetCurrentSignRequest.h"
 #import "TJDoSignRequest.h"
 #import "TJRefreshHeader.h"
 
-@interface TJSignViewController ()
+@interface TJSignRecordViewController ()
 
 @property (nonatomic, strong) NSMutableArray<TJSign *> *signs;
 @property (nonatomic, strong) TJGetCurrentSignRequest *getSignsRequest;
 
 @end
 
-@implementation TJSignViewController
+@implementation TJSignRecordViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"签到";
+    self.navigationItem.title = @"签到记录";
     self.tableView.estimatedRowHeight = 80.f;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    weakify(self);
-    self.tableView.mj_header = [TJRefreshHeader headerWithRefreshingBlock:^{
-        strongify(self);
-        [self refreshData];
-    }];
     
-//    [self.tableView registerClass:[TJSignClassCell class] forCellReuseIdentifier:NSStringFromClass([TJSignClassCell class])];
+    //    [self.tableView registerClass:[TJSignClassCell class] forCellReuseIdentifier:NSStringFromClass([TJSignClassCell class])];
     self.signs = @[].mutableCopy;
-    [self.tableView.mj_header beginRefreshing];
+    [self loadData];
 }
 
 #pragma mark - Table view data source
@@ -45,8 +41,6 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-//    TJSignClassCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([TJSignClassCell class]) forIndexPath:indexPath];
-//    cell.sign = self.signs[indexPath.row];
     TJSignClassCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([TJSignClassCell class])];
     if (!cell) {
         cell = [[TJSignClassCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:NSStringFromClass([TJSignClassCell class])];
@@ -84,7 +78,7 @@
 
 #pragma mark - api
 
-- (void)refreshData {
+- (void)loadData {
     if (self.getSignsRequest) {
         [self.getSignsRequest cancel];
         self.getSignsRequest = nil;
@@ -94,7 +88,6 @@
     weakify(self);
     self.getSignsRequest.successBlock = ^(id  _Nonnull result) {
         strongify(self);
-        [self.tableView.mj_header endRefreshing];
         NSArray *data = result[@"data"];
         if (data && [data isKindOfClass:[NSArray class]]) {
             for (NSDictionary *dic in data) {
@@ -105,8 +98,6 @@
         }
     };
     self.getSignsRequest.failureBlock = ^(NSError * _Nonnull error) {
-        strongify(self);
-        [self.tableView.mj_header endRefreshing];
         NSLog(@"%@", error);
     };
     [self.getSignsRequest start];
