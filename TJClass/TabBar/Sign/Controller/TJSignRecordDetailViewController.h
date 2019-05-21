@@ -1,5 +1,5 @@
 //
-//  TJSignRecordCell.h
+//  TJSignRecordDetailViewController.h
 //  TJClass
 //
 //  Created by Vin Lee on 2019/5/21.
@@ -11,9 +11,11 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface TJSignRecordCell : UITableViewCell
+@interface TJSignRecordDetailViewController : UITableViewController
 
-- (void)updateCellWithSign:(TJSign *)sign;
+@property (nonatomic, strong) TJSign *sign;
+
+- (instancetype)initWithSession:(NIMSession *)session;
 
 @end
 

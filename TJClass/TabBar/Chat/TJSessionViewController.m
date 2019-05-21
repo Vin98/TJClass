@@ -12,6 +12,7 @@
 #import "TJSessionConfig.h"
 #import "TJCreateSignViewController.h"
 #import "TJSignViewController.h"
+#import "TJSignRecordViewController.h"
 #import <NIMKit/NIMNormalTeamCardViewController.h>
 
 @interface TJSessionViewController () <NIMNormalTeamCardVCProtocol>
@@ -37,37 +38,24 @@
 }
 
 - (void)setupNavigation {
-    UIButton *enterTeamCard = [UIButton buttonWithType:UIButtonTypeCustom];
-    [enterTeamCard addTarget:self action:@selector(enterTeamCard:) forControlEvents:UIControlEventTouchUpInside];
-    [enterTeamCard setImage:[UIImage imageNamed:@"icon_session_info_normal"] forState:UIControlStateNormal];
-    [enterTeamCard setImage:[UIImage imageNamed:@"icon_session_info_pressed"] forState:UIControlStateHighlighted];
-    [enterTeamCard sizeToFit];
-    UIBarButtonItem *enterTeamCardItem = [[UIBarButtonItem alloc] initWithCustomView:enterTeamCard];
     
-    UIButton *infoBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [infoBtn addTarget:self action:@selector(enterPersonInfoCard:) forControlEvents:UIControlEventTouchUpInside];
-    [infoBtn setImage:[UIImage imageNamed:@"icon_session_info_normal"] forState:UIControlStateNormal];
-    [infoBtn setImage:[UIImage imageNamed:@"icon_session_info_pressed"] forState:UIControlStateHighlighted];
-    [infoBtn sizeToFit];
-    UIBarButtonItem *enterUInfoItem = [[UIBarButtonItem alloc] initWithCustomView:infoBtn];
-//
-//    UIButton *historyBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-//    [historyBtn addTarget:self action:@selector(enterHistory:) forControlEvents:UIControlEventTouchUpInside];
-//    [historyBtn setImage:[UIImage imageNamed:@"icon_history_normal"] forState:UIControlStateNormal];
-//    [historyBtn setImage:[UIImage imageNamed:@"icon_history_pressed"] forState:UIControlStateHighlighted];
-//    [historyBtn sizeToFit];
-//    UIBarButtonItem *historyButtonItem = [[UIBarButtonItem alloc] initWithCustomView:historyBtn];
+    UIBarButtonItem *enterUserInfoItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icon_session_info_normal"] style:UIBarButtonItemStylePlain target:self action:@selector(enterPersonInfoCard:)];
+    
+    UIBarButtonItem *enterTeamCardItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icon_session_info_normal"] style:UIBarButtonItemStylePlain target:self action:@selector(enterTeamCard:)];
+    
     UIBarButtonItem *recordHistoryItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icon_sign_clock"] style:UIBarButtonItemStylePlain target:self action:@selector(onSignRecordHistoryAction:)];
     if (self.session.sessionType == NIMSessionTypeTeam)
     {
         self.navigationItem.rightBarButtonItems = @[enterTeamCardItem, recordHistoryItem];
     } else {
-        self.navigationItem.rightBarButtonItem = enterUInfoItem;
+        self.navigationItem.rightBarButtonItem = enterUserInfoItem;
     }
 }
 
 - (void)onSignRecordHistoryAction:(id)sender {
-    
+    TJSignRecordViewController *recordVC = TJSignRecordViewController.new;
+    recordVC.session = self.session;
+    [self.navigationController pushViewController:recordVC animated:YES];
 }
 
 - (void)enterTeamCard:(id)sender {

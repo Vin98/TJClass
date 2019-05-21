@@ -27,6 +27,7 @@
 		ED0FB1E42293D425005C21A2 /* TJDoSignRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = ED0FB1E32293D425005C21A2 /* TJDoSignRequest.m */; };
 		ED0FB1E722941423005C21A2 /* TJSignRecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED0FB1E622941423005C21A2 /* TJSignRecordViewController.m */; };
 		ED0FB1EA22941534005C21A2 /* TJSignRecordCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ED0FB1E922941534005C21A2 /* TJSignRecordCell.m */; };
+		ED0FB1ED22943D79005C21A2 /* TJSignRecordDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED0FB1EC22943D79005C21A2 /* TJSignRecordDetailViewController.m */; };
 		ED131F8622926C1B000D9E4B /* TJPersonCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED131F8522926C1B000D9E4B /* TJPersonCardViewController.m */; };
 		ED131F8922926DEB000D9E4B /* TJSettingSwitcherCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ED131F8822926DEB000D9E4B /* TJSettingSwitcherCell.m */; };
 		ED131F9022928B3F000D9E4B /* NTESSystemNotificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED131F8A22928B3E000D9E4B /* NTESSystemNotificationViewController.m */; };
@@ -114,6 +115,8 @@
 		ED0FB1E622941423005C21A2 /* TJSignRecordViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TJSignRecordViewController.m; sourceTree = "<group>"; };
 		ED0FB1E822941534005C21A2 /* TJSignRecordCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TJSignRecordCell.h; sourceTree = "<group>"; };
 		ED0FB1E922941534005C21A2 /* TJSignRecordCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TJSignRecordCell.m; sourceTree = "<group>"; };
+		ED0FB1EB22943D79005C21A2 /* TJSignRecordDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TJSignRecordDetailViewController.h; sourceTree = "<group>"; };
+		ED0FB1EC22943D79005C21A2 /* TJSignRecordDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TJSignRecordDetailViewController.m; sourceTree = "<group>"; };
 		ED131F8422926C1B000D9E4B /* TJPersonCardViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TJPersonCardViewController.h; sourceTree = "<group>"; };
 		ED131F8522926C1B000D9E4B /* TJPersonCardViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TJPersonCardViewController.m; sourceTree = "<group>"; };
 		ED131F8722926DEB000D9E4B /* TJSettingSwitcherCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TJSettingSwitcherCell.h; sourceTree = "<group>"; };
@@ -395,6 +398,8 @@
 				ED131FA12292BDAE000D9E4B /* TJCreateSignViewController.m */,
 				ED0FB1E522941423005C21A2 /* TJSignRecordViewController.h */,
 				ED0FB1E622941423005C21A2 /* TJSignRecordViewController.m */,
+				ED0FB1EB22943D79005C21A2 /* TJSignRecordDetailViewController.h */,
+				ED0FB1EC22943D79005C21A2 /* TJSignRecordDetailViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -724,6 +729,7 @@
 				ED3E0795228B06D900BEC88F /* TJMineHeaderView.m in Sources */,
 				ED0BD1A72291484A006852D4 /* TJGroupListViewController.m in Sources */,
 				ED3E0798228B09DE00BEC88F /* TJLoginViewPresentAnimation.m in Sources */,
+				ED0FB1ED22943D79005C21A2 /* TJSignRecordDetailViewController.m in Sources */,
 				ED131F9022928B3F000D9E4B /* NTESSystemNotificationViewController.m in Sources */,
 				ED6A108F228BD53700E533B2 /* TJSignViewController.m in Sources */,
 				EDE946EA228D98FD0027802F /* TJMyClassesViewController.m in Sources */,

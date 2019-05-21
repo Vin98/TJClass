@@ -26,8 +26,8 @@
     
     if ([TJUserManager manager].logedIn) {
         self.window.rootViewController = TJMainViewController.new;
-//        [self loginToNIM];
-        [self mockLogin];
+        [self loginToNIM];
+//        [self mockLogin];
     } else {
         self.window.rootViewController = TJLoginViewController.new;
     }

@@ -8,10 +8,11 @@
 
 #import "TJSignRecordViewController.h"
 #import "TJSignViewController.h"
-#import "TJSignClassCell.h"
+#import "TJSignRecordCell.h"
 #import "TJGetCurrentSignRequest.h"
 #import "TJDoSignRequest.h"
 #import "TJRefreshHeader.h"
+#import "TJSignRecordDetailViewController.h"
 
 @interface TJSignRecordViewController ()
 
@@ -31,6 +32,7 @@
     
     //    [self.tableView registerClass:[TJSignClassCell class] forCellReuseIdentifier:NSStringFromClass([TJSignClassCell class])];
     self.signs = @[].mutableCopy;
+    [SVProgressHUD show];
     [self loadData];
 }
 
@@ -41,39 +43,22 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    TJSignClassCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([TJSignClassCell class])];
+    TJSignRecordCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([TJSignRecordCell class])];
     if (!cell) {
-        cell = [[TJSignClassCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:NSStringFromClass([TJSignClassCell class])];
+        cell = [[TJSignRecordCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:NSStringFromClass([TJSignRecordCell class])];
     }
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     TJSign *sign = self.signs[indexPath.row];
-    cell.sign = sign;
+    [cell updateCellWithSign:sign];
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     TJSign *sign = self.signs[indexPath.row];
-    if (![sign.creater isEqualToString:[NIMSDK sharedSDK].loginManager.currentAccount]) {
-        TJDoSignRequest *doSignRequest = [[TJDoSignRequest alloc] initWithSignId:sign.id];
-        doSignRequest.successBlock = ^(id  _Nonnull result) {
-            BOOL success = NO;
-            if (result && [result isKindOfClass:[NSDictionary class]]) {
-                success = [result[@"data"] boolValue];
-            }
-            if (success) {
-                [SVProgressHUD showSuccessWithStatus:@"签到成功"];
-                [SVProgressHUD dismissWithDelay:1.f];
-            } else {
-                [SVProgressHUD showErrorWithStatus:@"签到失败"];
-                [SVProgressHUD dismissWithDelay:1.f];
-            }
-        };
-        doSignRequest.failureBlock = ^(NSError * _Nonnull error) {
-            [SVProgressHUD showErrorWithStatus:@"签到失败"];
-            [SVProgressHUD dismissWithDelay:1.f];
-        };
-        [doSignRequest start];
-    }
+    TJSignRecordDetailViewController *detailVC = [[TJSignRecordDetailViewController alloc] initWithSession:self.session];
+    detailVC.sign = sign;
+    [self.navigationController pushViewController:detailVC animated:YES];
 }
 
 #pragma mark - api
@@ -88,6 +73,7 @@
     weakify(self);
     self.getSignsRequest.successBlock = ^(id  _Nonnull result) {
         strongify(self);
+        [SVProgressHUD dismiss];
         NSArray *data = result[@"data"];
         if (data && [data isKindOfClass:[NSArray class]]) {
             for (NSDictionary *dic in data) {
@@ -98,6 +84,7 @@
         }
     };
     self.getSignsRequest.failureBlock = ^(NSError * _Nonnull error) {
+        [SVProgressHUD showErrorWithStatus:@"加载失败"];
         NSLog(@"%@", error);
     };
     [self.getSignsRequest start];
