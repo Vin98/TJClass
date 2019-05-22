@@ -30,7 +30,7 @@
 - (void)start {
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     NSMutableDictionary *params = self.params.mutableCopy ?: @{}.mutableCopy;
-    if (!params[@"userId"]) {
+    if (!params[@"userId"] && !params[@"userid"]) {
         NSString *userId = [TJUserManager manager].currentUser.userId;
         [params addEntriesFromDictionary:@{@"userId" : userId ?: @""}];
     }

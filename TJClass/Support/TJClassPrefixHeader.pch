@@ -35,7 +35,7 @@ alpha:alphaValue]
 
 #define weakify(type)  __weak typeof(type) weak##type = type
 #define strongify(type)  __strong typeof(type) type = weak##type
-#define server_url     @"http://45.77.132.221"
+#define server_url     @"http://207.148.115.56"
 
 #import "TJCommonHeader.h"
 

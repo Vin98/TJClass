@@ -137,8 +137,8 @@ static const CGFloat TJSignClassAvatarDiameter = 25.f;
     }
     
     __block BOOL isSigned = NO;
-    [sign.signedUsers enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        if ([obj isEqualToString:[NIMSDK sharedSDK].loginManager.currentAccount]) {
+    [sign.signedUsers enumerateObjectsUsingBlock:^(TJSignedUser * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if ([obj.userid isEqualToString:[NIMSDK sharedSDK].loginManager.currentAccount]) {
             isSigned = YES;
             *stop = YES;
         }

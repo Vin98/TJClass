@@ -46,7 +46,12 @@
     UIBarButtonItem *recordHistoryItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icon_sign_clock"] style:UIBarButtonItemStylePlain target:self action:@selector(onSignRecordHistoryAction:)];
     if (self.session.sessionType == NIMSessionTypeTeam)
     {
-        self.navigationItem.rightBarButtonItems = @[enterTeamCardItem, recordHistoryItem];
+        NIMTeam *team = [[NIMSDK sharedSDK].teamManager teamById:self.session.sessionId];
+        if ([team.owner isEqualToString:[NIMSDK sharedSDK].loginManager.currentAccount]) {
+            self.navigationItem.rightBarButtonItems = @[enterTeamCardItem, recordHistoryItem];
+        } else {
+            self.navigationItem.rightBarButtonItem = enterTeamCardItem;
+        }
     } else {
         self.navigationItem.rightBarButtonItem = enterUserInfoItem;
     }

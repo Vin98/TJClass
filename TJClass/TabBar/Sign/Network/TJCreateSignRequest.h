@@ -15,7 +15,9 @@ NS_ASSUME_NONNULL_BEGIN
 - (instancetype)initWithTeamId:(NSString *)teamId
                        creater:(NSString *)creater
                      startTime:(NSUInteger)startTime
-                       endTime:(NSUInteger)endTime;
+                       endTime:(NSUInteger)endTime
+                           lat:(NSString *)lat
+                           lon:(NSString *)lon;
 
 @end
 

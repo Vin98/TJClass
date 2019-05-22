@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface TJDoSignRequest : TJBaseRequest
 
-- (instancetype)initWithSignId:(NSUInteger)signId;
+- (instancetype)initWithSignId:(NSUInteger)signId lat:(NSString *)lat lon:(NSString *)lon;
 
 @end
 

@@ -10,4 +10,8 @@
 
 @implementation TJSign
 
++ (NSDictionary<NSString *,id> *)modelContainerPropertyGenericClass {
+    return @{@"signedUsers" : TJSignedUser.class};
+}
+
 @end

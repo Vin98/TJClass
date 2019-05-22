@@ -87,7 +87,7 @@
                 TJMainViewController *mainViewController = TJMainViewController.new;
                 mainViewController.transitioningDelegate = self;
                 [self presentViewController:mainViewController animated:YES completion:^{
-                    [UIApplication sharedApplication].delegate.window.rootViewController = mainViewController;
+//                    [UIApplication sharedApplication].delegate.window.rootViewController = mainViewController;
                 }];
             }];
         }

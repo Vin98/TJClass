@@ -8,6 +8,8 @@
 
 #import "TJMineViewController.h"
 #import "TJMineHeaderView.h"
+#import "TJColorButtonCell.h"
+#import "TJLoginViewController.h"
 #import <NIMKit/NIMCommonTableData.h>
 #import <NIMKit/NIMCommonTableDelegate.h>
 #import <UserNotifications/UserNotifications.h>
@@ -107,6 +109,20 @@
                                   ],
                           FooterTitle:@""
                           },
+                      @{
+                          HeaderTitle : @"",
+                          RowContent : @[
+                                  @{
+                                      Title        : @"退出登录",
+                                      CellClass    : @"TJColorButtonCell",
+                                      CellAction   : @"logOut",
+                                      ExtraInfo    : @(TJColorButtonCellStyleRed),
+                                      RowHeight    : @(60),
+                                      ForbidSelect : @(YES),
+                                      SepLeftEdge  : @(self.view.width),
+                                      },
+                                  ],
+                          }
                       ];
     self.data = [NIMCommonTableSection sectionsWithData:data];
 }
@@ -139,6 +155,20 @@
             [SVProgressHUD showErrorWithStatus:@"更新失败"];
             [SVProgressHUD dismissWithDelay:2.f];
             switcher.on = !switcher.on;
+        }
+    }];
+}
+
+- (void)logOut {
+    [[NIMSDK sharedSDK].loginManager logout:^(NSError * _Nullable error) {
+        if (error) {
+            [SVProgressHUD showErrorWithStatus:@"退出登录失败"];
+        } else {
+            [TJUserManager manager].currentUser = nil;
+            [TJUserManager manager].logedIn = NO;
+            [self.navigationController popToRootViewControllerAnimated:YES];
+            TJLoginViewController *loginVC = [[TJLoginViewController alloc] init];
+            [UIApplication sharedApplication].keyWindow.rootViewController = loginVC;
         }
     }];
 }

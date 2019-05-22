@@ -10,13 +10,15 @@
 
 @implementation TJDoSignRequest
 
-- (instancetype)initWithSignId:(NSUInteger)signId {
+- (instancetype)initWithSignId:(NSUInteger)signId lat:(nonnull NSString *)lat lon:(nonnull NSString *)lon {
     self = [super initWithUrl:[NSString stringWithFormat:@"%@/api.php", server_url]];
     if (self) {
         self.requestType = TJReauestTypePost;
         self.params = @{
                         @"ac" : @"doSign",
                         @"signId" : @(signId),
+                        @"lat" : lat ?: @"",
+                        @"lon" : lon ?: @"",
                         };
     }
     return self;

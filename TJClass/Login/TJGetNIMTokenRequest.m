@@ -15,7 +15,8 @@
     self = [super initWithUrl:[NSString stringWithFormat:@"%@/acount.php", server_url]];
     if (self) {
         self.params = @{
-                        @"userid" : userid
+                        @"userid" : userid,
+                        @"ac" : @"getToken",
                         };
     }
     return self;

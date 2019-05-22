@@ -10,7 +10,6 @@
 #import "TJSignViewController.h"
 #import "TJSignRecordCell.h"
 #import "TJGetCurrentSignRequest.h"
-#import "TJDoSignRequest.h"
 #import "TJRefreshHeader.h"
 #import "TJSignRecordDetailViewController.h"
 

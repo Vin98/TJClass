@@ -13,7 +13,9 @@
 - (instancetype)initWithTeamId:(NSString *)teamId
                        creater:(NSString *)creater
                      startTime:(NSUInteger)startTime
-                       endTime:(NSUInteger)endTime {
+                       endTime:(NSUInteger)endTime
+                           lat:(nonnull NSString *)lat
+                           lon:(nonnull NSString *)lon{
     self = [super initWithUrl:[NSString stringWithFormat:@"%@/api.php", server_url]];
     if (self) {
         self.requestType = TJReauestTypePost;
@@ -23,6 +25,8 @@
                         @"creater" : creater ?: @"",
                         @"startTime" : @(startTime),
                         @"endTime" : @(endTime),
+                        @"lat" : lat ?: @"",
+                        @"lon" : lon ?: @"",
                         };
     }
     return self;

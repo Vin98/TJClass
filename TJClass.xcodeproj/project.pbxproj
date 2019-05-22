@@ -58,6 +58,7 @@
 		ED6A108F228BD53700E533B2 /* TJSignViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED6A108E228BD53700E533B2 /* TJSignViewController.m */; };
 		ED6A1093228BD55800E533B2 /* TJSignClassCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ED6A1092228BD55800E533B2 /* TJSignClassCell.m */; };
 		ED6A1099228BD7EF00E533B2 /* TJGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = ED6A1098228BD7EF00E533B2 /* TJGroup.m */; };
+		EDD3C627229523C7009919FD /* TJSignedUser.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD3C626229523C7009919FD /* TJSignedUser.m */; };
 		EDD77745228E9217006730B1 /* TJMyCreatedClassesRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD77744228E9217006730B1 /* TJMyCreatedClassesRequest.m */; };
 		EDD77749228E96B9006730B1 /* TJUserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD77748228E96B9006730B1 /* TJUserManager.m */; };
 		EDD7774F228E9B5E006730B1 /* TJMyClassDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD7774E228E9B5E006730B1 /* TJMyClassDetailViewController.m */; };
@@ -175,6 +176,8 @@
 		ED6A1092228BD55800E533B2 /* TJSignClassCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TJSignClassCell.m; sourceTree = "<group>"; };
 		ED6A1097228BD7EF00E533B2 /* TJGroup.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TJGroup.h; sourceTree = "<group>"; };
 		ED6A1098228BD7EF00E533B2 /* TJGroup.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TJGroup.m; sourceTree = "<group>"; };
+		EDD3C625229523C7009919FD /* TJSignedUser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TJSignedUser.h; sourceTree = "<group>"; };
+		EDD3C626229523C7009919FD /* TJSignedUser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TJSignedUser.m; sourceTree = "<group>"; };
 		EDD77743228E9217006730B1 /* TJMyCreatedClassesRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TJMyCreatedClassesRequest.h; sourceTree = "<group>"; };
 		EDD77744228E9217006730B1 /* TJMyCreatedClassesRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TJMyCreatedClassesRequest.m; sourceTree = "<group>"; };
 		EDD77747228E96B9006730B1 /* TJUserManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TJUserManager.h; sourceTree = "<group>"; };
@@ -422,6 +425,8 @@
 				ED6A1098228BD7EF00E533B2 /* TJGroup.m */,
 				ED5315AF2292F5110069199A /* TJSign.h */,
 				ED5315B02292F5110069199A /* TJSign.m */,
+				EDD3C625229523C7009919FD /* TJSignedUser.h */,
+				EDD3C626229523C7009919FD /* TJSignedUser.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -687,6 +692,7 @@
 				ED131F9622928D12000D9E4B /* TJPersonalCardViewController.m in Sources */,
 				ED131FA52292CB07000D9E4B /* TJCreateSignRequest.m in Sources */,
 				ED0BD1AA229177DC006852D4 /* TJSessionViewController.m in Sources */,
+				EDD3C627229523C7009919FD /* TJSignedUser.m in Sources */,
 				EDD77756228ED0D9006730B1 /* UIImage+Ex.m in Sources */,
 				ED131F8622926C1B000D9E4B /* TJPersonCardViewController.m in Sources */,
 				EDFFE057228BD92900A039DF /* TJUser.m in Sources */,

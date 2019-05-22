@@ -10,14 +10,19 @@
 #import "TJCreateSignRequest.h"
 #import <NIMKit/NIMCommonTableData.h>
 #import <NIMKit/NIMCommonTableDelegate.h>
+#import <CoreLocation/CoreLocation.h>
 
-@interface TJCreateSignViewController ()
+@interface TJCreateSignViewController () <CLLocationManagerDelegate>
 
 @property (nonatomic, strong) NIMCommonTableDelegate *delegator;
 
 @property (nonatomic, copy) NSArray *data;
 
 @property (nonatomic, strong) NIMSession *session;
+
+@property (nonatomic, strong) CLLocationManager *locationManager;
+@property (nonatomic, strong) CLLocation *location;
+@property (nonatomic,assign) BOOL loadingLocation;
 
 @end
 
@@ -27,6 +32,8 @@
     self = [super init];
     if (self) {
         self.session = session;
+        self.locationManager = [[CLLocationManager alloc] init];
+        self.locationManager.delegate = self;
     }
     return self;
 }
@@ -58,7 +65,7 @@
 - (void)buildData {
     NSArray *data = @[
                       @{
-                          HeaderTitle : @"默认截止时间为30分钟，你也可以自定义签到截止时间",
+                          HeaderTitle : @"默认截止时间为30分钟，你也可以自定义签到截止时间\n请打开手机定位以计算签到距离",
                           RowContent : @[
                                   @{
                                       Title : @"设置截止时间",
@@ -95,11 +102,30 @@
 }
 
 - (void)onActionCreateSign:(id)sender {
-    [SVProgressHUD show];
+    if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusNotDetermined) {
+        [self.locationManager requestWhenInUseAuthorization];
+    } else {
+        if ([CLLocationManager authorizationStatus] != kCLAuthorizationStatusAuthorizedAlways && [CLLocationManager authorizationStatus] != kCLAuthorizationStatusAuthorizedWhenInUse) {
+            [SVProgressHUD showErrorWithStatus:@"无地理位置访问权限"];
+            [SVProgressHUD dismissWithDelay:1.f];
+            return;
+        } else {
+            [self.locationManager stopUpdatingLocation];
+            [self.locationManager startUpdatingLocation];
+            self.loadingLocation = YES;
+        }
+    }
+    [SVProgressHUD showWithStatus:@"获取位置信息..."];
+}
+
+- (void)createSign {
+    CLLocationCoordinate2D coordinate = self.location.coordinate;
     TJCreateSignRequest *request = [[TJCreateSignRequest alloc] initWithTeamId:self.session.sessionId
                                                                        creater:[NIMSDK sharedSDK].loginManager.currentAccount
                                                                      startTime:[[NSDate date] timeIntervalSince1970]
-                                                                       endTime:[[NSDate date] timeIntervalSince1970] + 1800];
+                                                                       endTime:[[NSDate date] timeIntervalSince1970] + 1800
+                                                                           lat:[NSString stringWithFormat:@"%f", coordinate.latitude]
+                                                                           lon:[NSString stringWithFormat:@"%f", coordinate.longitude]];
     weakify(self);
     request.successBlock = ^(id  _Nonnull result) {
         BOOL success = NO;
@@ -124,6 +150,28 @@
         [SVProgressHUD dismissWithDelay:1.f];
     };
     [request start];
+}
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations {
+    self.location = locations.lastObject;
+    [self.locationManager stopUpdatingLocation];
+    self.loadingLocation = NO;
+    [self createSign];
+}
+
+- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
+    self.location = nil;
+    [self.locationManager stopUpdatingLocation];
+    self.loadingLocation = NO;
+    if ([SVProgressHUD isVisible]) {
+        [SVProgressHUD showErrorWithStatus:@"获取位置信息失败"];
+    }
+}
+
+- (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
+    if (self.loadingLocation) {
+        [self.locationManager startUpdatingLocation];
+    }
 }
 
 @end

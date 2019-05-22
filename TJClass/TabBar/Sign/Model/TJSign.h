@@ -7,17 +7,20 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "TJSignedUser.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface TJSign : NSObject
+@interface TJSign : NSObject <YYModel>
 
 @property (nonatomic, assign) NSUInteger id;
 @property (nonatomic, copy) NSString *teamId;
 @property (nonatomic, copy) NSString *creater;
 @property (nonatomic, assign) NSUInteger startTime;
 @property (nonatomic, assign) NSUInteger endTime;
-@property (nonatomic, copy) NSArray <NSString *> *signedUsers;
+@property (nonatomic, copy) NSString *lat;
+@property (nonatomic, copy) NSString *lon;
+@property (nonatomic, copy) NSArray <TJSignedUser *> *signedUsers;
 
 @end
 
