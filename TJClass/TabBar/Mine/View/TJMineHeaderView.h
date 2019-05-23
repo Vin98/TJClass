@@ -13,6 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface TJMineHeaderView : UIView
 
 @property (nonatomic, strong) UIImageView *avatarView;
+@property (nonatomic, copy) dispatch_block_t avatarDidTap;
 
 + (CGFloat)typicalHeight;
 

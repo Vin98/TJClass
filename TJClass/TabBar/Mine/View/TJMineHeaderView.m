@@ -29,6 +29,10 @@ static const CGFloat TJMineHeaderViewAvatarDiamater = 80.f;
         make.center.mas_equalTo(self);
         make.size.mas_equalTo(CGSizeMake(TJMineHeaderViewAvatarDiamater, TJMineHeaderViewAvatarDiamater));
     }];
+    
+    self.avatarView.userInteractionEnabled = YES;
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(avatarTapped:)];
+    [self.avatarView addGestureRecognizer:tap];
 }
 
 - (UIImageView *)avatarView {
@@ -43,6 +47,12 @@ static const CGFloat TJMineHeaderViewAvatarDiamater = 80.f;
 
 + (CGFloat)typicalHeight {
     return 2.f * SCREEN_WIDTH / 3.f;
+}
+
+- (void)avatarTapped:(id)sender {
+    if (self.avatarDidTap) {
+        self.avatarDidTap();
+    }
 }
 
 @end

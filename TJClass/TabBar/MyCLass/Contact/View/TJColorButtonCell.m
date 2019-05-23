@@ -111,6 +111,8 @@
         }
             break;
     }
+    self.layer.cornerRadius = self.height / 2;
+    self.layer.masksToBounds = YES;
 }
 
 - (CGSize)sizeThatFits:(CGSize)size{

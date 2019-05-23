@@ -10,9 +10,12 @@
 #import "TJMineHeaderView.h"
 #import "TJColorButtonCell.h"
 #import "TJLoginViewController.h"
+#import "TJUserInfoSettingViewController.h"
+#import "TJMySignRecordViewController.h"
 #import <NIMKit/NIMCommonTableData.h>
 #import <NIMKit/NIMCommonTableDelegate.h>
 #import <UserNotifications/UserNotifications.h>
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @interface TJMineViewController () <NIMUserManagerDelegate>
 
@@ -34,6 +37,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title = @"设置";
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"login_user"] style:UIBarButtonItemStylePlain target:self action:@selector(onActionUserInfo:)];
     self.view.backgroundColor = [UIColor whiteColor];
     [self buildData];
     weakify(self);
@@ -50,6 +54,15 @@
     self.tableView.dataSource = self.delegator;
     
     [[NIMSDK sharedSDK].userManager addDelegate:self];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    NIMUser *me = [[NIMSDK sharedSDK].userManager userInfo:[[NIMSDK sharedSDK].loginManager currentAccount]];
+    if ([me.userId isKindOfClass:[NSString class]]) {
+        NIMKitInfo *info = [[NIMKit sharedKit] infoByUser:me.userId option:nil];
+        [self.headerView.avatarView sd_setImageWithURL:[NSURL URLWithString:info.avatarUrlString] placeholderImage:info.avatarImage];
+    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -116,7 +129,7 @@
                                       Title        : @"退出登录",
                                       CellClass    : @"TJColorButtonCell",
                                       CellAction   : @"logOut",
-                                      ExtraInfo    : @(TJColorButtonCellStyleRed),
+                                      ExtraInfo    : @(TJColorButtonCellStyleBlue),
                                       RowHeight    : @(60),
                                       ForbidSelect : @(YES),
                                       SepLeftEdge  : @(self.view.width),
@@ -135,6 +148,11 @@
 - (TJMineHeaderView *)headerView {
     if (!_headerView) {
         _headerView = [[TJMineHeaderView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, [TJMineHeaderView typicalHeight])];
+        weakify(self);
+        _headerView.avatarDidTap = ^{
+            strongify(self);
+            [self onActionUserInfo:nil];
+        };
     }
     return _headerView;
 }
@@ -142,7 +160,15 @@
 #pragma mark - Action
 
 - (void)onActionMySignRecord:(id)sender {
-    
+    TJMySignRecordViewController *vc = TJMySignRecordViewController.new;
+    vc.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+- (void)onActionUserInfo:(id)sender {
+    TJUserInfoSettingViewController *userInfoSettingViewController = [[TJUserInfoSettingViewController alloc] init];
+    userInfoSettingViewController.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:userInfoSettingViewController animated:YES];
 }
 
 - (void)onActionShowPushDetailSetting:(UISwitch *)switcher
@@ -168,9 +194,28 @@
             [TJUserManager manager].logedIn = NO;
             [self.navigationController popToRootViewControllerAnimated:YES];
             TJLoginViewController *loginVC = [[TJLoginViewController alloc] init];
-            [UIApplication sharedApplication].keyWindow.rootViewController = loginVC;
+            [self clearController:self];
+            UIWindow *window = [UIApplication sharedApplication].keyWindow;
+            for (UIView *view in window.subviews) {
+                [view removeFromSuperview];
+            }
+            [[UIApplication sharedApplication].keyWindow setRootViewController:loginVC];
         }
     }];
+}
+
+- (void)clearController:(UIViewController *)controller {
+    if (controller.navigationController) {
+        UINavigationController *nav = controller.navigationController;
+        [nav setViewControllers:@[] animated:NO];
+        [self clearController:nav];
+    } else if (controller.tabBarController) {
+        UITabBarController *tab = controller.tabBarController;
+        [tab setViewControllers:@[] animated:NO];
+        [self clearController:tab];
+    } else if (controller.presentingViewController) {
+        [controller dismissViewControllerAnimated:NO completion:nil];
+    }
 }
 
 @end

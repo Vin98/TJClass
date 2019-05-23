@@ -60,4 +60,21 @@
     return [state boolValue];
 }
 
++ (NSString *)genderString:(NIMUserGender)gender{
+    NSString *genderStr = @"";
+    switch (gender) {
+        case NIMUserGenderMale:
+            genderStr = @"男";
+            break;
+        case NIMUserGenderFemale:
+            genderStr = @"女";
+            break;
+        case NIMUserGenderUnknown:
+            genderStr = @"未知";
+        default:
+            break;
+    }
+    return genderStr;
+}
+
 @end

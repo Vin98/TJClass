@@ -22,6 +22,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)updateUserName:(NSString *)name phoneNumber:(NSString *)phoneNumber;
 
++ (NSString *)genderString:(NIMUserGender)gender;
+
 @end
 
 NS_ASSUME_NONNULL_END
