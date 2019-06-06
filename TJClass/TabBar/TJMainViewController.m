@@ -30,29 +30,13 @@
 - (void)_addViewControllers {
     NSMutableArray <__kindof UIViewController *> *viewControlers = NSMutableArray.new;
     
-    //聊天
-//    TJChatViewController *chatViewController = TJChatViewController.new;
-//    UITabBarItem *chatBarItem = [[UITabBarItem alloc] initWithTitle:@"聊天" image:[UIImage imageNamed:@"tabbar_chat"] selectedImage:[UIImage imageNamed:@"tabbar_chat"]];
-//    chatViewController.tabBarItem = chatBarItem;
-//    UINavigationController *chatNav = [[UINavigationController alloc] initWithRootViewController:chatViewController];
-//    [viewControlers addObject:chatNav];
     TJSessionListViewController *sessionListViewController = TJSessionListViewController.new;
     UITabBarItem *chatBarItem = [[UITabBarItem alloc] initWithTitle:@"聊天" image:[UIImage imageNamed:@"tabbar_chat"] selectedImage:[UIImage imageNamed:@"tabbar_chat"]];
     sessionListViewController.tabBarItem = chatBarItem;
     UINavigationController *chatNav = [[UINavigationController alloc] initWithRootViewController:sessionListViewController];
     [viewControlers addObject:chatNav];
-    
-    
-    //签到
-    TJSignViewController *signViewController = TJSignViewController.new;
-    UITabBarItem *signBarItem = [[UITabBarItem alloc] initWithTitle:@"签到" image:[UIImage imageNamed:@"tabbar_chat"] selectedImage:[UIImage imageNamed:@"tabbar_chat"]];
-    signViewController.tabBarItem = signBarItem;
-    UINavigationController *signNav = [[UINavigationController alloc] initWithRootViewController:signViewController];
-//    [viewControlers addObject:signNav];
-    
+
     //通讯录
-//    TJMyClassesViewController *myClassViewController = TJMyClassesViewController.new;
-//    TJGroupListViewController *myClassViewController = TJGroupListViewController.new;
     TJContactViewController *contactViewController = TJContactViewController.new;
     UITabBarItem *contactBarItem = [[UITabBarItem alloc] initWithTitle:@"班级" image:[UIImage imageNamed:@"tabbar_chat"] selectedImage:[UIImage imageNamed:@"tabbar_chat"]];
     contactViewController.tabBarItem = contactBarItem;

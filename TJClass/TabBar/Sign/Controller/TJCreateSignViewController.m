@@ -57,6 +57,11 @@
     [self refresh];
 }
 
+- (void)dealloc
+{
+    [SVProgressHUD dismiss];
+}
+
 - (void)refresh {
     [self buildData];
     [self.tableView reloadData];
